@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>vm2.TestUtilities</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Label="NuGet Package Settings">
+        <PackageId>vm2.TestUtilities</PackageId>
+        <Title>Cross-platform Glob Pattern Matching API</Title>
+        <Description>
+            Small, generic set of test utilities used across several `vm2.*` projects.
+        </Description>
+        <PackageTags>test;utilities;vm2;xUnit;FluentAssertions</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/vmelamed/vm2.TestUtilities</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/vmelamed/vm2.TestUtilities</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="xunit.v3.extensibility.core" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+        <Using Include="FluentAssertions" />
+        <Using Include="FluentAssertions.Formatting" />
+        <Using Include="FluentAssertions.Extensibility" />
+    </ItemGroup>
+
+</Project>
