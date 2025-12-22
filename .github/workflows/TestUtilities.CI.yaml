@@ -69,6 +69,8 @@ jobs:
       - get-params
     permissions:
       contents: read
+      checks: write
+      pull-requests: write
     with:
       os: ${{ needs.get-params.outputs.os }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
