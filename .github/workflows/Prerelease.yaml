@@ -32,7 +32,7 @@ jobs:
       packages: write # Required for GitHub Packages
     secrets: inherit
     with:
-      os: ubuntu-latest
+      package-project: './vm2.TestUtilities.slnx'
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
       semver-build-prefix: ${{ inputs.semver-build-prefix || 'preview' }}
       force-publish: ${{ inputs.force-publish || false }}

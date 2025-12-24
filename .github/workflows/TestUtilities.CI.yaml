@@ -75,7 +75,7 @@ jobs:
       os: ${{ needs.get-params.outputs.os }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
       configuration: ${{ needs.get-params.outputs.configuration }}
-      preprocessor-symbols: "_"
+      preprocessor-symbols: ""
       build-projects: ${{ needs.get-params.outputs.build-projects }}
       test-projects: ""
       benchmark-projects: ""
