@@ -1,4 +1,10 @@
 <Solution>
+    <Folder Name="/.github/" />
+    <Folder Name="/.github/workflows/">
+        <File Path=".github/workflows/Prerelease.yaml" />
+        <File Path=".github/workflows/Release.yaml" />
+        <File Path=".github/workflows/TestUtilities.CI.yaml" />
+    </Folder>
     <Folder Name="/Solution Items/">
         <File Path=".editorconfig" />
         <File Path=".gitignore" />

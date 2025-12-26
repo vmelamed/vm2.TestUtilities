@@ -16,11 +16,11 @@ on:
 jobs:
   release:
     name: Stable Release
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@5ec227717fab0a3f29e3e1a4caecc6b6306c61b9 # replace with main branch once stable
+    secrets: inherit
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
-    secrets: inherit
     with:
       package-project: "./vm2.TestUtilities.slnx"
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
