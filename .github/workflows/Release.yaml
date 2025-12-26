@@ -18,7 +18,7 @@ jobs:
     name: Stable Release
     uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@5ec227717fab0a3f29e3e1a4caecc6b6306c61b9 # replace with main branch once stable
     secrets:
-      GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
+      NUGET_GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
