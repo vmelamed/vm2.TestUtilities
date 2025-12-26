@@ -8,6 +8,7 @@ on:
 
   workflow_dispatch:
     inputs:
+
       semver-build-prefix:
         description: "Prerelease prefix (preview, alpha, beta, rc)"
         type: choice
@@ -17,6 +18,7 @@ on:
           - beta
           - rc
         default: preview
+
       force-publish:
         description: "Force publish even if already tagged"
         type: boolean
@@ -26,7 +28,7 @@ jobs:
   prerelease:
     name: Prerelease
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true)
-    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@main
+    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@5ec227717fab0a3f29e3e1a4caecc6b6306c61b9 # replace with main branch once stable
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
