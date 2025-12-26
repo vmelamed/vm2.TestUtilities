@@ -13,8 +13,12 @@
         <PackageTags>test;utilities;vm2;xUnit;FluentAssertions</PackageTags>
         <PackageProjectUrl>https://github.com/vmelamed/vm2.TestUtilities</PackageProjectUrl>
         <RepositoryUrl>https://github.com/vmelamed/vm2.TestUtilities</RepositoryUrl>
-        <PackageReadmeFile>../../README.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" />
