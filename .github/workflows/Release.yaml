@@ -16,7 +16,7 @@ on:
 jobs:
   release:
     name: Stable Release
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@5ec227717fab0a3f29e3e1a4caecc6b6306c61b9 # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@1d94089c3c55f55395b94d1d5d798a4092ffedc0 # replace with main branch once stable
     secrets:
       NUGET_GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
     permissions:
