@@ -16,15 +16,15 @@ on:
 jobs:
   release:
     name: Stable Release
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@1d94089c3c55f55395b94d1d5d798a4092ffedc0 # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@37864b56b22723eaa8e6305d0dd0426017fca77f # replace with main branch once stable
     secrets:
-      NUGET_GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
     permissions:
       contents: write
-      packages: write # Required for GitHub Packages
+      packages: write
     with:
       package-project: "./vm2.TestUtilities.slnx"
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
       force-publish: ${{ inputs.force-publish || false }}
       save_package_artifacts: true
-      nuget-server: github # Publish to GitHub Packages
+      nuget-server: github

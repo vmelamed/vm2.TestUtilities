@@ -8,7 +8,6 @@ on:
 
   workflow_dispatch:
     inputs:
-
       semver-build-prefix:
         description: "Prerelease prefix (preview, alpha, beta, rc)"
         type: choice
@@ -28,14 +27,14 @@ jobs:
   prerelease:
     name: Prerelease
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true)
-    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@1d94089c3c55f55395b94d1d5d798a4092ffedc0 # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@37864b56b22723eaa8e6305d0dd0426017fca77f # replace with main branch once stable
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
     secrets:
-      NUGET_GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
     with:
-      package-project: './vm2.TestUtilities.slnx'
+      package-project: "./vm2.TestUtilities.slnx"
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
       semver-build-prefix: ${{ inputs.semver-build-prefix || 'preview' }}
       force-publish: ${{ inputs.force-publish || false }}
