@@ -11,9 +11,9 @@
             Small, generic set of test utilities used across several `vm2.*` projects.
         </Description>
         <PackageTags>test;utilities;vm2;xUnit;FluentAssertions</PackageTags>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/vmelamed/vm2.TestUtilities</PackageProjectUrl>
         <RepositoryUrl>https://github.com/vmelamed/vm2.TestUtilities</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>

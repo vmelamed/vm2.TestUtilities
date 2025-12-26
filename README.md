@@ -1,6 +1,6 @@
 # vm2.TestUtilities
 
-Generic test utilities for vm2.* projects. Contains:
+Common test utilities for vm2.* projects. Contains:
 
 - `XUnitLogger`: an XUnit-compatible logger that writes to test output
 - `XUnitLoggerProvider`: an `ILoggerProvider` that creates `XUnitLogger`s
