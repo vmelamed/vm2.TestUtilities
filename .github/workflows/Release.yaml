@@ -32,7 +32,7 @@ jobs:
     name: Stable Release
     needs: [log-trigger]
     if: always()
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@6d08389737e82aeb3d907cc4c2f63075a39491a3 # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@a7dffe902fcdbab1a3c5e63c1841ced5108f8440 # replace with main branch once stable
     permissions:
       contents: write
       packages: write
