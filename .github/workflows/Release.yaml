@@ -8,20 +8,36 @@ on:
 
   workflow_dispatch:
     inputs:
+      reason:
+        description: "Reason for manual release"
+        required: true
+        type: string
+
       force-publish:
         description: "Force publish"
         type: boolean
         default: false
 
 jobs:
+  log-trigger:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log manual trigger reason
+        run: |
+          echo "::warning::Manual release triggered by ${{ github.actor }}"
+          echo "::warning::Reason: ${{ inputs.reason }}"
+
   release:
     name: Stable Release
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@37864b56b22723eaa8e6305d0dd0426017fca77f # replace with main branch once stable
-    secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
+    needs: [log-trigger]
+    if: always()
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@6d08389737e82aeb3d907cc4c2f63075a39491a3 # replace with main branch once stable
     permissions:
       contents: write
       packages: write
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
     with:
       package-project: "./vm2.TestUtilities.slnx"
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
