@@ -24,7 +24,10 @@ on:
         default: ""
 
 env:
-  BUILD_PROJECTS: '["./vm2.TestUtilities.slnx"]'
+  BUILD_PROJECTS: >
+    [
+    "./vm2.TestUtilities.slnx"
+    ]
   TEST_PROJECTS: >-
     []
   BENCHMARK_PROJECTS: >-
