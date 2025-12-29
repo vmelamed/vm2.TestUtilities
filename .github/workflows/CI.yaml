@@ -38,7 +38,7 @@ jobs:
   get-params:
     name: Prepare the default and passed in parameters
     runs-on: ubuntu-latest
-    # if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     env:
       dotnet_version: ${{ vars.DOTNET_VERSION }}
       configuration: ${{ vars.CONFIGURATION }}
@@ -143,3 +143,10 @@ jobs:
       preprocessor-symbols: ${{ needs.get-params.outputs.preprocessor-symbols }}
       min-coverage-pct: ${{ needs.get-params.outputs.min-coverage-pct }}
       max-regression-pct: ${{ needs.get-params.outputs.max-regression-pct }}
+
+  call-ci-cancelled:
+    if: ${{ cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow cancelled
+        run: echo "The workflow was cancelled, so the CI job was skipped."
