@@ -65,19 +65,19 @@ jobs:
         shell: bash
         run: |
           # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
-          build_projects=${{ fromJson(env.BUILD_PROJECTS) }}
-          test_projects=${{ fromJson(env.TEST_PROJECTS) }}
-          benchmark_projects=${{ fromJson(env.BENCHMARK_PROJECTS) }}
+          build_projects=${{ env.BUILD_PROJECTS }}
+          test_projects=${{ env.TEST_PROJECTS }}
+          benchmark_projects=${{ env.BENCHMARK_PROJECTS }}
 
               echo "::notice::build_projects: ${build_projects:-}"
 
           if [ "${{ github.event_name }}" == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
-              os=${{ fromJson(env.OS) }}
+              os=${{ env.OS }}
               preprocessor_symbols="${{ env.PREPROCESSOR_SYMBOLS }};SHORT_RUN"
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
               # Set the default values for push and pull_request events
-              os=${{ fromJson(env.OS) }}
+              os=${{ env.OS }}
               preprocessor_symbols=${{ env.PREPROCESSOR_SYMBOLS }}
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
               # Get the values from the inputs of workflow_dispatch event (the UI)
@@ -127,10 +127,10 @@ jobs:
       pull-requests: write # Required to comment on PRs
       checks: write # Required to create GitHub Checks
     with:
-      os: ${{ toJSON(needs.get-params.outputs.os) }}
-      build-projects: ${{ toJSON(needs.get-params.outputs.build-projects) }}
-      test-projects: ${{ toJSON(needs.get-params.outputs.test-projects) }}
-      benchmark-projects: ${{ toJSON(needs.get-params.outputs.benchmark-projects) }}
+      os: ${{ needs.get-params.outputs.os }}
+      build-projects: ${{ needs.get-params.outputs.build-projects }}
+      test-projects: ${{ needs.get-params.outputs.test-projects }}
+      benchmark-projects: ${{ needs.get-params.outputs.benchmark-projects }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
       configuration: ${{ needs.get-params.outputs.configuration }}
       preprocessor-symbols: ${{ needs.get-params.outputs.preprocessor-symbols }}
