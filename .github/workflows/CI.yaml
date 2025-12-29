@@ -24,10 +24,8 @@ on:
         default: ""
 
 env:
-  BUILD_PROJECTS: >
-    [
-    "./vm2.TestUtilities.slnx"
-    ]
+  BUILD_PROJECTS: >-
+    ["vm2.TestUtilities.slnx"]
   TEST_PROJECTS: >-
     []
   BENCHMARK_PROJECTS: >-
@@ -70,6 +68,8 @@ jobs:
           build_projects=${{ env.BUILD_PROJECTS }}
           test_projects=${{ env.TEST_PROJECTS }}
           benchmark_projects=${{ env.BENCHMARK_PROJECTS }}
+
+              echo "::notice::build_projects: ${build_projects:-}"
 
           if [ "${{ github.event_name }}" == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
