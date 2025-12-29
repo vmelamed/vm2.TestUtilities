@@ -47,8 +47,8 @@ jobs:
     env:
       dotnet_version: ${{ vars.DOTNET_VERSION }}
       configuration: ${{ vars.CONFIGURATION }}
-      # min_coverage_pct: ${{ vars.MIN_COVERAGE_PCT }}
-      # max_regression_pct: ${{ vars.MAX_REGRESSION_PCT }}
+      min_coverage_pct: ${{ vars.MIN_COVERAGE_PCT }}
+      max_regression_pct: ${{ vars.MAX_REGRESSION_PCT }}
     outputs:
       build-projects: ${{ steps.init-params.outputs.build-projects }}
       test-projects: ${{ steps.init-params.outputs.test-projects }}
