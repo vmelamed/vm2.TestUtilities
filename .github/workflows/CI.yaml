@@ -117,8 +117,8 @@ jobs:
       pull-requests: write # Required to comment on PRs
       checks: write # Required to create GitHub Checks
     with:
-      os: ${{ needs.get-params.outputs.os }}
-      build-projects: ${{ needs.get-params.outputs.build-projects }}
+      os: '["ubuntu-latest"]' # ${{ needs.get-params.outputs.os }}
+      build-projects: '["./vm2.TestUtilities.slnx"]' # ${{ needs.get-params.outputs.build-projects }}
       test-projects: ${{ needs.get-params.outputs.test-projects }}
       benchmark-projects: ${{ needs.get-params.outputs.benchmark-projects }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
