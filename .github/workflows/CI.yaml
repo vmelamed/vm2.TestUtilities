@@ -109,7 +109,7 @@ jobs:
           }  >> $GITHUB_OUTPUT
 
   call-ci:
-    uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
+    uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@e7c6ab7f5a0407783fca709201bfcda0b7020b51
     needs:
       - get-params
     permissions:
