@@ -114,6 +114,7 @@ jobs:
           }  >> $GITHUB_OUTPUT
 
   call-ci:
+    if: ${{ needs.get-params.result == 'success' }}
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
     needs:
       - get-params
