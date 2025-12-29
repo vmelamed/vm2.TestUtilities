@@ -60,18 +60,18 @@ jobs:
         shell: bash
         run: |
           # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
-          build_projects=${{ env.BUILD_PROJECTS }}
-          test_projects=${{ env.TEST_PROJECTS }}
-          benchmark_projects=${{ env.BENCHMARK_PROJECTS }}
+          build_projects='${{ env.BUILD_PROJECTS }}'
+          test_projects='${{ env.TEST_PROJECTS }}'
+          benchmark_projects='${{ env.BENCHMARK_PROJECTS }}'
 
           if [ "${{ github.event_name }}" == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
-              os=${{ env.OS }}
+              os='${{ env.OS }}'
               preprocessor_symbols="${{ env.PREPROCESSOR_SYMBOLS }};SHORT_RUN"
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
               # Set the default values for push and pull_request events
-              os=${{ env.OS }}
-              preprocessor_symbols=${{ env.PREPROCESSOR_SYMBOLS }}
+              os='${{ env.OS }}'
+              preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }}'
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
               # Get the values from the inputs of workflow_dispatch event (the UI)
               # Convert comma-separated runner's OS values to JSON array
@@ -95,19 +95,6 @@ jobs:
             echo "max-regression-pct   = ${max_regression_pct}"
           }  >> $GITHUB_STEP_SUMMARY
 
-          # Set the outputs:
-          {
-            echo "os=${os}"
-            echo "build-projects=${build_projects}"
-            echo "test-projects=${test_projects}"
-            echo "benchmark-projects=${benchmark_projects}"
-            echo "dotnet-version=${dotnet_version}"
-            echo "configuration=${configuration}"
-            echo "preprocessor-symbols=${preprocessor_symbols}"
-            echo "min-coverage-pct=${min_coverage_pct}"
-            echo "max-regression-pct=${max_regression_pct}"
-          }  >> $GITHUB_OUTPUT
-
   call-ci:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
     needs:
@@ -117,8 +104,8 @@ jobs:
       pull-requests: write # Required to comment on PRs
       checks: write # Required to create GitHub Checks
     with:
-      os: '["ubuntu-latest"]' # ${{ needs.get-params.outputs.os }}
-      build-projects: '["./vm2.TestUtilities.slnx"]' # ${{ needs.get-params.outputs.build-projects }}
+      os: ${{ needs.get-params.outputs.os }}
+      build-projects: ${{ needs.get-params.outputs.build-projects }}
       test-projects: ${{ needs.get-params.outputs.test-projects }}
       benchmark-projects: ${{ needs.get-params.outputs.benchmark-projects }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
