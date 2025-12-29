@@ -25,7 +25,7 @@ on:
 
 env:
   BUILD_PROJECTS: >-
-    ["vm2.TestUtilities.slnx"]
+    ["./vm2.TestUtilities.slnx"]
   TEST_PROJECTS: >-
     []
   BENCHMARK_PROJECTS: >-
@@ -69,8 +69,6 @@ jobs:
           test_projects=${{ env.TEST_PROJECTS }}
           benchmark_projects=${{ env.BENCHMARK_PROJECTS }}
 
-              echo "::notice::build_projects: ${build_projects:-}"
-
           if [ "${{ github.event_name }}" == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
               os=${{ env.OS }}
@@ -91,10 +89,10 @@ jobs:
 
           # Display the outputs:
           {
+            echo "os                   = ${os}"
             echo "build-projects       = ${build_projects}"
             echo "test-projects        = ${test_projects}"
             echo "benchmark-projects   = ${benchmark_projects}"
-            echo "os                   = ${os}"
             echo "dotnet-version       = ${dotnet_version}"
             echo "configuration        = ${configuration}"
             echo "preprocessor-symbols = ${preprocessor_symbols}"
@@ -104,10 +102,10 @@ jobs:
 
           # Set the outputs:
           {
+            echo "os=${os}"
             echo "build-projects=${build_projects}"
             echo "test-projects=${test_projects}"
             echo "benchmark-projects=${benchmark_projects}"
-            echo "os=${os}"
             echo "dotnet-version=${dotnet_version}"
             echo "configuration=${configuration}"
             echo "preprocessor-symbols=${preprocessor_symbols}"
