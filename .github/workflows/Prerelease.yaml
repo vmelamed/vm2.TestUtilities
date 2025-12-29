@@ -28,6 +28,12 @@ on:
         type: boolean
         default: false
 
+env:
+  # If you have more than one project, specify projects to package, e.g. ["src/Project1/Project1.csproj","src/Project2/Project2.csproj"]
+  PACKAGE_PROJECTS: >-
+    ["./vm2.TestUtilities.slnx"]
+  NUGET_SERVER: github  # 'github' - GitHub Packages; 'nuget' - NuGet.org
+
 jobs:
   log-trigger:
     if: github.event_name == 'workflow_dispatch'
@@ -41,16 +47,16 @@ jobs:
   prerelease:
     name: Prerelease
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true)
-    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@37864b56b22723eaa8e6305d0dd0426017fca77f # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@main
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
     with:
-      package-project: "./vm2.TestUtilities.slnx"
+      package-projects: '["./vm2.TestUtilities.slnx"]'
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
       force-publish: ${{ inputs.force-publish || false }}
       semver-build-prefix: ${{ inputs.semver-build-prefix || 'preview' }}
       save_package_artifacts: true
-      nuget-server: github # Publish to GitHub Packages
+      nuget-server: ${{ env.NUGET_SERVER }} # Publish to GitHub Packages

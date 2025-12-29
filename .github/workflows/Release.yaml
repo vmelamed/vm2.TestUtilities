@@ -32,14 +32,14 @@ jobs:
     name: Stable Release
     needs: [log-trigger]
     if: always()
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@a7dffe902fcdbab1a3c5e63c1841ced5108f8440 # replace with main branch once stable
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
     permissions:
       contents: write
       packages: write
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
     with:
-      package-project: "./vm2.TestUtilities.slnx"
+      package-projects: '["./vm2.TestUtilities.slnx"]'
       dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
       force-publish: ${{ inputs.force-publish || false }}
       save_package_artifacts: true
