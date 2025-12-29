@@ -147,6 +147,10 @@ jobs:
   call-ci-cancelled:
     if: ${{ cancelled() }}
     runs-on: ubuntu-latest
+    needs:
+      - get-params
+      - debug-check
+      - call-ci
     steps:
       - name: Workflow cancelled
         run: echo "The workflow was cancelled, so the CI job was skipped."
