@@ -37,13 +37,8 @@ env:
 jobs:
   get-params:
     name: Prepare the default and passed in parameters
-    runs-on: ubuntu-latest # here it doesn't matter - we're preparing the inputs for the next workload'
-    if: >
-      ${{
-      github.event_name == 'pull_request' ||
-      github.event_name == 'workflow_dispatch' ||
-      github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')
-      }}
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     env:
       dotnet_version: ${{ vars.DOTNET_VERSION }}
       configuration: ${{ vars.CONFIGURATION }}
@@ -113,8 +108,22 @@ jobs:
             echo "max-regression-pct=${max_regression_pct}"
           }  >> $GITHUB_OUTPUT
 
+  debug-check:
+    name: Debug - Check get-params result
+    runs-on: ubuntu-latest
+    needs: get-params
+    if: always()
+    steps:
+      - name: Show result
+        run: |
+          echo "get-params result: ${{ needs.get-params.result }}"
+          echo "get-params outputs:"
+          echo "  os: ${{ needs.get-params.outputs.os }}"
+          echo "  dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}"
+          echo "  configuration: ${{ needs.get-params.outputs.configuration }}"
+
   call-ci:
-    if: ${{ needs.get-params.result == 'success' }}
+    if: ${{ !cancelled() && needs.get-params.result == 'success' }}
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
     needs:
       - get-params
