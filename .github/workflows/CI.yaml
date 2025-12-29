@@ -60,23 +60,23 @@ jobs:
         shell: bash
         run: |
           # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
-          build_projects="${{ env.BUILD_PROJECTS }}"
-          test_projects="${{ env.TEST_PROJECTS }}"
-          benchmark_projects="${{ env.BENCHMARK_PROJECTS }}"
+          build_projects='${{ env.BUILD_PROJECTS }}'
+          test_projects='${{ env.TEST_PROJECTS }}'
+          benchmark_projects='${{ env.BENCHMARK_PROJECTS }}'
 
-          if [ "${{ github.event_name }}" == "push" ]; then
+          if [ '${{ github.event_name }}' == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
-              os="${{ env.OS }}"
-              preprocessor_symbols="${{ env.PREPROCESSOR_SYMBOLS }};SHORT_RUN"
-          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+              os='${{ env.OS }}'
+              preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }};SHORT_RUN'
+          elif [ '${{ github.event_name }}' == "pull_request" ]; then
               # Set the default values for push and pull_request events
-              os="${{ env.OS }}"
-              preprocessor_symbols="${{ env.PREPROCESSOR_SYMBOLS }}"
-          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+              os='${{ env.OS }}'
+              preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }}'
+          elif [ '${{ github.event_name }}' == "workflow_dispatch" ]; then
               # Get the values from the inputs of workflow_dispatch event (the UI)
               # Convert comma-separated runner's OS values to JSON array
               os=$(echo "${{ inputs.os }}" | jq -Rc 'split(",") | map(select(length > 0) | gsub("^\\s+|\\s+$";""))')
-              preprocessor_symbols="${{ inputs.preprocessor-symbols }}"
+              preprocessor_symbols='${{ inputs.preprocessor-symbols }}'
           else
               echo "Unsupported event: ${{ github.event_name }}"
               exit 5
@@ -94,6 +94,11 @@ jobs:
             echo "min-coverage-pct     = ${min_coverage_pct}"
             echo "max-regression-pct   = ${max_regression_pct}"
           }  >> $GITHUB_STEP_SUMMARY
+
+  call-ping:
+    uses: vmelamed/vm2.DevOps/.github/workflows/_ping.yaml@main
+    needs:
+      - get-params
 
   call-ci:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
