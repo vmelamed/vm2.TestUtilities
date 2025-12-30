@@ -85,9 +85,8 @@ jobs:
       contents: write
       packages: write # Required for GitHub Packages
     secrets:
-      NUGET_API_KEY:
-        ${{ secrets.NUGET_API_GITHUB_KEY }} # the API key to use for publishing to GitHub NuGet packages or NuGet.org
-        # Make sure it corresponds to the 'env.NUGET_SERVER' above
+      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}  # the API key to use for publishing to GitHub NuGet packages or NuGet.org
+                                                          # Make sure it corresponds to the 'env.NUGET_SERVER' above
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}
