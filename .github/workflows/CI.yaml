@@ -82,18 +82,18 @@ jobs:
               exit 5
           fi
 
-          # Display the outputs:
+          # Set the outputs:
           {
-            echo "os                   = ${os}"
-            echo "build-projects       = ${build_projects}"
-            echo "test-projects        = ${test_projects}"
-            echo "benchmark-projects   = ${benchmark_projects}"
-            echo "dotnet-version       = ${dotnet_version}"
-            echo "configuration        = ${configuration}"
-            echo "preprocessor-symbols = ${preprocessor_symbols}"
-            echo "min-coverage-pct     = ${min_coverage_pct}"
-            echo "max-regression-pct   = ${max_regression_pct}"
-          }  >> $GITHUB_STEP_SUMMARY
+            echo "os=${os}"
+            echo "build-projects=${build_projects}"
+            echo "test-projects=${test_projects}"
+            echo "benchmark-projects=${benchmark_projects}"
+            echo "dotnet-version=${dotnet_version}"
+            echo "configuration=${configuration}"
+            echo "preprocessor-symbols=${preprocessor_symbols}"
+            echo "min-coverage-pct=${min_coverage_pct}"
+            echo "max-regression-pct=${max_regression_pct}"
+          }  >> $GITHUB_OUTPUT
 
   call-ping:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ping.yaml@main
