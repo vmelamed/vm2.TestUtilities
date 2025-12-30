@@ -1,4 +1,4 @@
-name: Prerelease to NuGet
+name: NuGet Prerelease
 
 on:
   pull_request:
@@ -31,10 +31,42 @@ on:
 env:
   # If you have more than one project, specify projects to package, e.g. ["src/Project1/Project1.csproj","src/Project2/Project2.csproj"]
   PACKAGE_PROJECTS: >-
-    ["./vm2.TestUtilities.slnx"]
+    ["./src/vm2.TestUtilities/vm2.TestUtilities.csproj"]
   NUGET_SERVER: github  # 'github' - GitHub Packages; 'nuget' - NuGet.org
 
 jobs:
+  get-params:
+    name: Prepare the parameters
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    outputs:
+      package-projects: ${{ steps.init-params.outputs.package-projects }}
+      nuget-server: ${{ steps.init-params.outputs.nuget-server }}
+      semver-build-prefix: ${{ steps.init-params.outputs.semver-build-prefix }}
+      force-publish: ${{ steps.init-params.outputs.force-publish }}
+    steps:
+      - name: Gather parameters
+        id: init-params
+        shell: bash
+        run: |
+          package_projects='${{ env.PACKAGE_PROJECTS }}'
+          nuget_server='${{ env.NUGET_SERVER }}'
+          semver_build_prefix=preview
+          force_publish=false
+
+          if [ '${{ github.event_name }}' == "workflow_dispatch" ]; then
+            semver_build_prefix='${{ inputs.semver-build-prefix }}'
+            force_publish='${{ inputs.force-publish }}'
+          fi
+
+          # Set the outputs:
+          {
+            echo "package-projects=${package_projects}"
+            echo "nuget-server=${nuget_server}"
+            echo "semver-build-prefix=$semver_build_prefix"
+            echo "force-publish=${force_publish}"
+          }  >> $GITHUB_OUTPUT
+
   log-trigger:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -46,17 +78,19 @@ jobs:
 
   prerelease:
     name: Prerelease
-    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true)
+    needs:
+      - get-params
     uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@main
     permissions:
       contents: write
       packages: write # Required for GitHub Packages
     secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}  # the API key to use for publishing to GitHub NuGet packages or NuGet.org
+                                                          # Make sure it corresponds to the 'env.NUGET_SERVER' above
     with:
-      package-projects: '["./vm2.TestUtilities.slnx"]'
-      dotnet-version: ${{ vars.DOTNET_VERSION || '10.0.x' }}
-      force-publish: ${{ inputs.force-publish || false }}
-      semver-build-prefix: ${{ inputs.semver-build-prefix || 'preview' }}
+      package-projects: ${{ needs.get-params.outputs.package-projects }}
+      dotnet-version: ${{ vars.DOTNET_VERSION }}
+      semver-build-prefix: ${{ needs.get-params.outputs.semver-build-prefix }}
+      force-publish: ${{ fromJSON(needs.get-params.outputs.force-publish) }}
+      nuget-server: ${{ needs.get-params.outputs.nuget-server }}
       save_package_artifacts: true
-      nuget-server: ${{ env.NUGET_SERVER }} # Publish to GitHub Packages
