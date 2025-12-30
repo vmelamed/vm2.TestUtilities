@@ -67,7 +67,7 @@ jobs:
           if [ '${{ github.event_name }}' == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
               os='${{ env.OS }}'
-              preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }};SHORT_RUN'
+              preprocessor_symbols='SHORT_RUN;${{ env.PREPROCESSOR_SYMBOLS }}'
           elif [ '${{ github.event_name }}' == "pull_request" ]; then
               # Set the default values for push and pull_request events
               os='${{ env.OS }}'
