@@ -26,10 +26,8 @@ on:
 env:
   BUILD_PROJECTS: >-
     ["./vm2.TestUtilities.slnx"]
-  TEST_PROJECTS: >-
-    []
-  BENCHMARK_PROJECTS: >-
-    []
+  TEST_PROJECTS: ""
+  BENCHMARK_PROJECTS: ""
   OS: >-
     ["ubuntu-latest"]
   PREPROCESSOR_SYMBOLS: ""
