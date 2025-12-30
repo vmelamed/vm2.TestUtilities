@@ -31,8 +31,8 @@ on:
 env:
   # If you have more than one project, specify projects to package, e.g. ["src/Project1/Project1.csproj","src/Project2/Project2.csproj"]
   PACKAGE_PROJECTS: >-
-    ["./src/vm2.TestUtilities/vm2.TestUtilities.csproj"]
-  NUGET_SERVER: github  # 'github' - GitHub Packages; 'nuget' - NuGet.org
+    ["./src/TestUtilities/TestUtilities.csproj"]
+  NUGET_SERVER: github # 'github' - GitHub Packages; 'nuget' - NuGet.org
 
 jobs:
   get-params:
@@ -85,8 +85,9 @@ jobs:
       contents: write
       packages: write # Required for GitHub Packages
     secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}  # the API key to use for publishing to GitHub NuGet packages or NuGet.org
-                                                          # Make sure it corresponds to the 'env.NUGET_SERVER' above
+      NUGET_API_KEY:
+        ${{ secrets.NUGET_API_GITHUB_KEY }} # the API key to use for publishing to GitHub NuGet packages or NuGet.org
+        # Make sure it corresponds to the 'env.NUGET_SERVER' above
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}
