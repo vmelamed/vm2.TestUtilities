@@ -100,35 +100,34 @@ jobs:
     needs:
       - get-params
 
-  call-ci-hardcoded:
-      needs: [get-params]
-      uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
-      with:
-        os: '["ubuntu-latest"]'
-        build-projects: '["./vm2.TestUtilities.slnx"]'
-        test-projects: '[]'
-        benchmark-projects: '[]'
-        dotnet-version: '10.0.x'
-        configuration: 'Release'
-        preprocessor-symbols: ''
-        min-coverage-pct: 80
-        max-regression-pct: 20
+  # call-ci-hardcoded:
+  #     needs: [get-params]
+  #     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
+  #     with:
+  #       os: '["ubuntu-latest"]'
+  #       build-projects: '["./vm2.TestUtilities.slnx"]'
+  #       test-projects: '[]'
+  #       benchmark-projects: '[]'
+  #       dotnet-version: '10.0.x'
+  #       configuration: 'Release'
+  #       preprocessor-symbols: ''
+  #       min-coverage-pct: 80
+  #       max-regression-pct: 20
 
   call-ci:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
-    needs:
-      - get-params
+    needs: [get-params]
     permissions:
       contents: read
-      pull-requests: write # Required to comment on PRs
-      checks: write # Required to create GitHub Checks
+      pull-requests: write
+      checks: write
     with:
-      os: ${{ needs.get-params.outputs.os }}
-      build-projects: ${{ needs.get-params.outputs.build-projects }}
-      test-projects: ${{ needs.get-params.outputs.test-projects }}
-      benchmark-projects: ${{ needs.get-params.outputs.benchmark-projects }}
+      os: ${{ needs.get-params.outputs.os }} # JSON string
+      build-projects: ${{ needs.get-params.outputs.build-projects }} # JSON string
+      test-projects: ${{ needs.get-params.outputs.test-projects }} # JSON string
+      benchmark-projects: ${{ needs.get-params.outputs.benchmark-projects }} # JSON string
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
       configuration: ${{ needs.get-params.outputs.configuration }}
       preprocessor-symbols: ${{ needs.get-params.outputs.preprocessor-symbols }}
-      min-coverage-pct: ${{ needs.get-params.outputs.min-coverage-pct }}
-      max-regression-pct: ${{ needs.get-params.outputs.max-regression-pct }}
+      min-coverage-pct: ${{ fromJson(needs.get-params.outputs.min-coverage-pct) }}
+      max-regression-pct: ${{ fromJson(needs.get-params.outputs.max-regression-pct) }}
