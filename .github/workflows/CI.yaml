@@ -100,6 +100,20 @@ jobs:
     needs:
       - get-params
 
+  call-ci-hardcoded:
+      needs: [get-params]
+      uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
+      with:
+        os: '["ubuntu-latest"]'
+        build-projects: '["./vm2.TestUtilities.slnx"]'
+        test-projects: '[]'
+        benchmark-projects: '[]'
+        dotnet-version: '10.0.x'
+        configuration: 'Release'
+        preprocessor-symbols: ''
+        min-coverage-pct: 80
+        max-regression-pct: 20
+
   call-ci:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
     needs:
