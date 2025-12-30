@@ -60,7 +60,13 @@ jobs:
           # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
           build_projects='${{ env.BUILD_PROJECTS }}'
           test_projects='${{ env.TEST_PROJECTS }}'
+          if [[ "$test_projects" == "[]" || "$test_projects" == "[\"\"]" ]]; then
+            test_projects=''
+          fi
           benchmark_projects='${{ env.BENCHMARK_PROJECTS }}'
+          if [[ "$benchmark_projects" == "[]" || "$benchmark_projects" == "[\"\"]" ]]; then
+            benchmark_projects=''
+          fi
 
           if [ '${{ github.event_name }}' == "push" ]; then
               # Set the default values for push events - add SHORT_RUN to preprocessor symbols for faster benchmark tests (less precise)
