@@ -86,6 +86,19 @@ jobs:
               exit 5
           fi
 
+          # Display the outputs:
+          {
+            echo "os                   = ${os}"
+            echo "build-projects       = ${build_projects}"
+            echo "test-projects        = ${test_projects}"
+            echo "benchmark-projects   = ${benchmark_projects}"
+            echo "dotnet-version       = ${dotnet_version}"
+            echo "configuration        = ${configuration}"
+            echo "preprocessor-symbols = ${preprocessor_symbols}"
+            echo "min-coverage-pct     = ${min_coverage_pct}"
+            echo "max-regression-pct   = ${max_regression_pct}"
+          }  >> $GITHUB_STEP_SUMMARY
+
           # Set the outputs:
           {
             echo "os=${os}"
