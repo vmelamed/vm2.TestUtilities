@@ -99,4 +99,4 @@ jobs:
       force-publish: ${{ fromJSON(needs.get-params.outputs.force-publish) }}
       reason: ${{ inputs.reason || '' }}
       nuget-server: ${{ needs.get-params.outputs.nuget-server }}
-      save_package_artifacts: true
+      save-package-artifacts: true
