@@ -26,11 +26,9 @@ env:
   BUILD_PROJECTS: >-
     [""]
 
-  TEST_PROJECTS: >-
-    ["__skip__"]
+  TEST_PROJECTS: ""
 
-  BENCHMARK_PROJECTS: >-
-    ["__skip__"]
+  BENCHMARK_PROJECTS: ""
 
   PREPROCESSOR_SYMBOLS: ""
 
