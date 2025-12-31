@@ -3,7 +3,7 @@ name: Publish NuGet Release
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+" # trigger on version tags like v1.2.3
+      - "v[0-9]*.[0-9]*.[0-9]*" # trigger on version tags like v1.2.3
 
   workflow_dispatch:
     inputs:
@@ -75,5 +75,6 @@ jobs:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}
       force-publish: ${{ fromJSON(needs.get-params.outputs.force-publish) }}
+      reason: ${{ inputs.reason || '' }}
       nuget-server: ${{ needs.get-params.outputs.nuget-server }}
       save_package_artifacts: true
