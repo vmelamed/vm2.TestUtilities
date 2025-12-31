@@ -15,47 +15,22 @@ on:
       os:
         description: Runner OS (or multiple OS-es separate by comma, e.g. 'ubuntu-latest,windows-latest')
         type: string
-        default: ubuntu-latest  # *CP* Adjust the default runner OS or OS-es as needed.
-        # There is a known GitHub actions issue: the workflow dispatch UI doesn't properly handle JSON strings with quotes.
-        # E.g. for the input '["ubuntu-latest"]', the UI removes the inner quotes and it becomes the invalid JSON: '[ubuntu-latest]'.
+        default: ubuntu-latest
 
       preprocessor-symbols:
         description: Define semicolon-separated preprocessor symbols to pass to the compiler
         type: string
-        default: SHORT_RUN # *CP* semicolon-separated preprocessor symbols to pass to the compiler.
-        # Here it enables benchmarks short run mode for faster execution, but less precise results, acceptable for CI runs.
+        default: SHORT_RUN
 
 env:
-  # *CP* The project(s) to build as a JSON array of strings - path(s) to the project(s).
-  # An empty string means to build the root solution and run all test and benchmark projects in it.
-  # Hint: unless your solution/project file has all necessary projects included explicitly or as references,
-  # list all projects that need to be built, including tests and benchmarks to ensure that the artifacts are cached and reused.
-  # Hint: to set the value as a valid JSON list of strings, useYAML folded style (>-), and double quotes around the strings, e.g.:
-  # BUILD_PROJECTS: >-
-  #   ["src/Project1/Project1.csproj", "src/Project2/Project2.csproj"]
+  # Build the whole solution:
   BUILD_PROJECTS: ""
-
-  # *CP* The test project(s) to run as a JSON array of strings - path(s) to the test project(s).
-  # If not specified, no tests are requested. Not having tests is not typical and not desirable, but possible.
-  # Hint: to set the value as a valid JSON list of strings, useYAML folded style (>-), and double quotes around the strings, e.g.:
-  # TEST_PROJECTS: >-
-  #   ["tests/Project1.Tests/Project1.Tests.csproj", "tests/Project2.Tests/Project2.Tests.csproj"]
+  # This project does not have tests, so TEST_PROJECTS is left empty:
   TEST_PROJECTS: ""
-
-  # *CP* The benchmarks project(s) to run as a JSON array of strings - path(s) to the benchmark project(s).
-  # If not specified, no benchmarks are requested.
-  # Hint: to set the value as a valid JSON list of strings, useYAML folded style (>-), and double quotes around the strings, e.g.:
-  # BENCHMARK_PROJECTS: >-
-  #   ["benchmarks/Project1.Benchmarks/Project1.Benchmarks.csproj"]
+  # This project does not have benchmarks, so BENCHMARK_PROJECTS is left empty:
   BENCHMARK_PROJECTS: ""
-
-  # *CP* Semicolon-separated preprocessor symbols to pass to the compiler, e.g. SHORT_RUN (to enable benchmarks short run mode).
-  PREPROCESSOR_SYMBOLS: "SHORT_RUN"
-
-  # *CP* The OS runner(s) to use for building and testing as a JSON array of strings - e.g. "ubuntu-latest", "windows-latest", "macos-latest".
-  # Hint: to set the value as a valid JSON list of strings, useYAML folded style (>-), and double quotes around the strings, e.g.:
-  # OS: >-
-  #   ["ubuntu-latest", "windows-latest", "macos-latest"]
+  PREPROCESSOR_SYMBOLS: ""
+  # Built on the default ["ubuntu-latest"] runner OS unless overridden via workflow_dispatch input.
   OS: ""
 
 jobs:
@@ -64,13 +39,10 @@ jobs:
     runs-on: ubuntu-latest # in this workflow the runner doesn't matter - we're just preparing the inputs for the next workload(s).
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     env:
-      # *CP* The following are invariant - no matter how we trigger the workflow, they should stay the same.
-      # Consider moving them to repo variables and secrets - they can be set at the org., environment, or repository level.
-      # Also you can set permissions on these as well. They'll behave almost like a per-organization or per-repository policy.
-      dotnet_version: ${{ vars.DOTNET_VERSION }}          # e.g. '10.0.x'
-      configuration: ${{ vars.CONFIGURATION }}            # e.g. 'Release'
-      min_coverage_pct: ${{ vars.MIN_COVERAGE_PCT }}      # e.g. '80'
-      max_regression_pct: ${{ vars.MAX_REGRESSION_PCT }}  # e.g. '20'
+      dotnet_version: ${{ vars.DOTNET_VERSION }}
+      configuration: ${{ vars.CONFIGURATION }}
+      min_coverage_pct: ${{ vars.MIN_COVERAGE_PCT }}
+      max_regression_pct: ${{ vars.MAX_REGRESSION_PCT }}
     outputs:
       build-projects: ${{ steps.init-params.outputs.build-projects }}
       test-projects: ${{ steps.init-params.outputs.test-projects }}
@@ -131,13 +103,10 @@ jobs:
     uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
     needs:
       - get-params
-    secrets:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} # *CP* if the repo has tests and codecov is enabled, otherwise - delete this line
-      BENCHER_API_TOKEN: ${{ secrets.BENCHER_API_TOKEN }} # *CP* if the repo has benchmarks and Bencher is used, otherwise - delete this line
     permissions:
       contents: read
-      pull-requests: write # Required to comment on PRs
-      checks: write # Required to create GitHub Checks
+      pull-requests: write
+      checks: write
     with:
       os: ${{ needs.get-params.outputs.os }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
