@@ -23,17 +23,11 @@ on:
         default: SHORT_RUN
 
 env:
-  BUILD_PROJECTS: >-
-    [""]
-
+  BUILD_PROJECTS: ""
   TEST_PROJECTS: ""
-
   BENCHMARK_PROJECTS: ""
-
   PREPROCESSOR_SYMBOLS: ""
-
-  OS: >-
-    ["ubuntu-latest"]
+  OS: ""
 
 jobs:
   get-params:
