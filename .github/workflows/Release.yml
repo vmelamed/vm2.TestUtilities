@@ -18,15 +18,14 @@ on:
         default: false
 
 env:
-  PACKAGE_PROJECTS: >- # CP. Projects to package, e.g. ["src/Project1/Project1.csproj","src/Project2/Project2.csproj"]
-    ["./src/<name>/<name>.csproj"]
-  NUGET_SERVER: github  # CP. 'github' - GitHub Packages; 'nuget' - NuGet.org. Make sure the NUGET_API_KEY secret corresponds to the server selected here.
+  PACKAGE_PROJECTS: ""
+  NUGET_SERVER: github
 
 jobs:
   get-params:
     name: Prepare the parameters
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
     outputs:
       package-projects: ${{ steps.init-params.outputs.package-projects }}
       nuget-server: ${{ steps.init-params.outputs.nuget-server }}
