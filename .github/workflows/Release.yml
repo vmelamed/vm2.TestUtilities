@@ -29,7 +29,7 @@ jobs:
       ${{
       github.event_name == 'workflow_dispatch' ||
       !contains(github.ref_name,'-') &&
-      startsWith(github.ref, format('refs/tags/%s', vars.MINVER_TAG_PREFIX || 'v'))
+      startsWith(github.ref, format('refs/tags/%s', vars.MinVerTagPrefix || 'v'))
       }}
     outputs:
       package-projects: ${{ steps.init-params.outputs.package-projects }}
@@ -73,8 +73,9 @@ jobs:
     needs:
       - get-params
     secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}  # CP. the API key to use for publishing to GitHub NuGet packages or NuGet.org
-                                                          # Make sure it corresponds to the 'nuget-server' below
+      NUGET_API_KEY:
+        ${{ secrets.NUGET_API_GITHUB_KEY }} # CP. the API key to use for publishing to GitHub NuGet packages or NuGet.org
+        # Make sure it corresponds to the 'nuget-server' below
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}
