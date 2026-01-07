@@ -10,9 +10,9 @@
         <Description>
             Small, generic set of test utilities used across several `vm2.*` projects.
         </Description>
-        <PackageTags>test;utilities;vm2;xUnit;FluentAssertions</PackageTags>
-        <PackageProjectUrl>https://github.com/vmelamed/vm2.TestUtilities</PackageProjectUrl>
+        <PackageTags>test utilities vm2 xUnit FluentAssertions</PackageTags>
         <RepositoryUrl>https://github.com/vmelamed/vm2.TestUtilities</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/vmelamed/vm2.TestUtilities</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
