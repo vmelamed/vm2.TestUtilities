@@ -33,9 +33,8 @@ on:
         default: false
 
 env:
-  # Build and package the root solution's projects marked with <IsPackable>true</IsPackable>.
-  PACKAGE_PROJECTS: ""
-  # GitHub Package
+  PACKAGE_PROJECTS: >-
+    ["src/vm2.TestUtilities/vm2.TestUtilities.csproj"]
   NUGET_SERVER: github
 
 jobs:
@@ -72,6 +71,7 @@ jobs:
           }  >> $GITHUB_OUTPUT
 
   log-trigger:
+    name: Log manual trigger reason
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -81,16 +81,16 @@ jobs:
           echo "::notice::Reason: ${{ inputs.reason }}"
 
   prerelease:
-    name: Prerelease
+    name: Prerelease - package and release NuGet prerelease
     needs:
       - get-params
     uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@main
+    secrets: inherit
     permissions:
-      contents: write
-      packages: write # Required for GitHub Packages
-    secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}  # CP. The API key to use for publishing to the NuGet server (GitHub Package, NuGet.org, etc.).
-                                                          # Make sure it corresponds to the 'env.NUGET_SERVER' above
+      contents: read # Required to checkout the code
+      packages: read # Required to restore GitHub Packages NuGet packages
+      pull-requests: write # Required to comment on PRs
+      checks: write # Required to create GitHub Checks
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}

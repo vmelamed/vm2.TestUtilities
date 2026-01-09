@@ -18,7 +18,8 @@ on:
         default: false
 
 env:
-  PACKAGE_PROJECTS: ""
+  PACKAGE_PROJECTS: >-
+    ["src/vm2.TestUtilities/vm2.TestUtilities.csproj"]
   NUGET_SERVER: github
 
 jobs:
@@ -56,6 +57,7 @@ jobs:
           }  >> $GITHUB_OUTPUT
 
   log-trigger:
+    name: Log manual trigger reason
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -65,17 +67,16 @@ jobs:
           echo "::notice::Reason: ${{ inputs.reason }}"
 
   release:
-    name: Release
-    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
-    permissions:
-      contents: write
-      packages: write
+    name: Release - package and release NuGet release
     needs:
       - get-params
-    secrets:
-      NUGET_API_KEY:
-        ${{ secrets.NUGET_API_GITHUB_KEY }} # CP. the API key to use for publishing to GitHub NuGet packages or NuGet.org
-        # Make sure it corresponds to the 'nuget-server' below
+    uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
+    secrets: inherit
+    permissions:
+      contents: write # Required to checkout the code
+      packages: write # Required to publish GitHub Packages NuGet packages
+      pull-requests: write # Required to comment on PRs
+      checks: write # Required to create GitHub Checks
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       dotnet-version: ${{ vars.DOTNET_VERSION }}

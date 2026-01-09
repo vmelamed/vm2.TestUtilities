@@ -1,5 +1,4 @@
 name: "CI: Build, Run Tests, Run Benchmarks"
-# Comments marked with *CP* are "Customization Point"-s to adjust the workflow to your repo needs.
 
 on:
   push:
@@ -20,22 +19,21 @@ on:
       preprocessor-symbols:
         description: Define semicolon-separated preprocessor symbols to pass to the compiler
         type: string
-        default: SHORT_RUN
+        required: false
 
 env:
   # Build the whole solution:
-  BUILD_PROJECTS: ""
-  # This project does not have tests, so TEST_PROJECTS is left empty:
-  TEST_PROJECTS: ""
-  # This project does not have benchmarks, so BENCHMARK_PROJECTS is left empty:
-  BENCHMARK_PROJECTS: ""
+  BUILD_PROJECTS: >-
+    ["vm2.TestUtilities.slnx"]
+  TEST_PROJECTS: "" # This project does not have tests, so TEST_PROJECTS is left empty:
+  BENCHMARK_PROJECTS: "" # This project does not have benchmarks, so BENCHMARK_PROJECTS is left empty:
   PREPROCESSOR_SYMBOLS: ""
-  # Built on the default ["ubuntu-latest"] runner OS unless overridden via workflow_dispatch input.
-  OS: ""
+  OS: >-
+    ["ubuntu-latest"]
 
 jobs:
   get-params:
-    name: Prepare the default and passed in parameters
+    name: Finalize parameters from variables, inputs, secrets and defaults
     runs-on: ubuntu-latest # in this workflow the runner doesn't matter - we're just preparing the inputs for the next workload(s).
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     env:
@@ -100,13 +98,16 @@ jobs:
           }  >> $GITHUB_OUTPUT
 
   call-ci:
-    uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
+    name: Build, Test, Benchmarks
     needs:
       - get-params
+    uses: vmelamed/vm2.DevOps/.github/workflows/_ci.yaml@main
+    secrets: inherit
     permissions:
-      contents: read
-      pull-requests: write
-      checks: write
+      contents: read # Required to checkout the code
+      packages: read # Required to restore GitHub Packages NuGet packages
+      pull-requests: write # Required to comment on PRs
+      checks: write # Required to create GitHub Checks
     with:
       os: ${{ needs.get-params.outputs.os }}
       dotnet-version: ${{ needs.get-params.outputs.dotnet-version }}
