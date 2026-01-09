@@ -19,7 +19,7 @@ on:
 
 env:
   PACKAGE_PROJECTS: >-
-    ["src/vm2.TestUtilities/vm2.TestUtilities.csproj"]
+    ["src/TestUtilities/TestUtilities.csproj"]
   NUGET_SERVER: ${{ vars.NUGET_SERVER || 'github' }}
 
 jobs:
