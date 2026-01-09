@@ -1,5 +1,10 @@
 # Changelog
 
+
+
+## v1.0.4-preview.20260109.14 - 2026-01-09
+
+- No notable changes.
 All notable changes to **vm2.TestUtilities** will be documented in this file.
 
 ## [Unreleased]
