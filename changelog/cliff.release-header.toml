@@ -1,7 +1,7 @@
 [changelog]
 header = """# Changelog\n\n"""
 body = """
-## {{ tag }} - {{ timestamp | date("%Y-%m-%d") }}
+## {{ tag }} - {{ timestamp | date(format="%Y-%m-%d") }}
 See prereleases below.
 """
 trim = true
