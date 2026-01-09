@@ -1,69 +1,58 @@
 # Changelog
 
-All notable changes to **vm2.TestUtilities** will be documented in this file.
 
-## [Unreleased]
 
-## [1.0.3-preview.20260109.9] - 2026-01-09
+## v1.0.4-preview.20260109.13 - 2026-01-09
 
-### Fixed
+- No notable changes.
 
-- Correct workflow project name and finalize CI wiring for template consumers.
-- Normalize Directory.*.props layout and workflow variable naming (save-package-artifacts).
 
-## [1.0.2] - 2025-12-31
+## v1.0.4-preview.20260109.12 - 2026-01-09
 
-### Fixed
+- No notable changes.
 
-- Refine Release workflow trigger/conditions and packaging inputs (PACKAGE_PROJECTS and tag regex).
-- Add reason input/logging for manual releases and tidy release/pre-release workflow formatting.
 
-## [1.0.2-preview.20251231.4] - 2025-12-31
+## v1.0.4-preview.20260109.11 - 2026-01-09
 
-### Fixed
+- No notable changes.
 
-- Correct prerelease artifact key handling; align prerelease/release workflow references.
-- Add ClearCache workflow and supporting CI/prerelease jobs for cache hygiene.
 
-## [1.0.1] - 2025-12-27
+## v1.0.4-preview.20260109.10 - 2026-01-09
 
-### Changed
+- No notable changes.
 
-- Update stable release workflow reference to the latest vm2.DevOps commit hashes.
 
-## [1.0.1-preview.20251227.11] - 2025-12-27
+## v1.0.3 - 2026-01-09
 
-### Added
+- No notable changes.
 
-- Reason input and logging for manual pre-release and release runs.
 
-## [1.0.0] - 2025-12-27
+## v1.0.3-preview.20260109.8 - 2026-01-09
 
-### Added
+- No notable changes.
 
-- Initial stable release tag aligned with release workflow updates.
 
-## [0.1.0-preview.20251231.7] - 2025-12-31
+## v1.0.2 - 2026-01-01
 
-### Fixed
+- No notable changes.
 
-- Correct save-package-artifacts key in prerelease workflow; improve packaging paths.
 
-## [0.1.0-preview.20251226.10] - 2025-12-26
+## v1.0.2-preview.20251231.4 - 2025-12-31
 
-### Changed
+- No notable changes.
 
-- Refresh workflow references, secrets wiring, and dispatch inputs; ensure README paths in packing.
 
-## [0.1.0-preview.20251226.6] - 2025-12-26
+## v1.0.2-preview.20251230.47 - 2025-12-30
 
-### Added
+- No notable changes.
 
-- Workflow scaffolding (CI, prerelease, release) with GitHub/NuGet publishing support.
-- Integration with vm2.DevOps reusable actions and initial repository split from vm2.DevOps.
 
-## [0.1.0-preview.20251226.3] - 2025-12-26
+## v1.0.2-preview.20251230.46 - 2025-12-30
 
-### Added
+- No notable changes.
 
-- Initial CI build/test/benchmark workflow and prerelease wiring.
+
+## v0.1.0-preview.20251226.3 - 2025-12-26
+
+- No notable changes.
+
