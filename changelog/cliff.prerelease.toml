@@ -2,17 +2,17 @@
 header = """# Changelog\n\n"""
 body = """
 ## {{ tag }} - {{ timestamp | date(format="%Y-%m-%d") }}
-{{#if groups}}
-{{#each groups}}
-### {{ title }}
-{{#each commits}}
-- {{ message | trim }}
-{{/each}}
+{% if groups %}
+{% for group in groups %}
+### {{ group.title }}
+{% for commit in group.commits %}
+- {{ commit.message | trim }}
+{% endfor %}
 
-{{/each}}
-{{else}}
+{% endfor %}
+{% else %}
 - No notable changes.
-{{/if}}
+{% endif %}
 """
 trim = true
 footer = ""
