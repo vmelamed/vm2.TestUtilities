@@ -20,6 +20,7 @@ on:
         description: Define semicolon-separated preprocessor symbols to pass to the compiler
         type: string
         required: false
+        default: ''
 
 env:
   # Build the whole solution:
