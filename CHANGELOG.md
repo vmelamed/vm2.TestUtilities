@@ -8,6 +8,9 @@ See prereleases below.
 ## v1.0.4 - 2026-01-09
 See prereleases below.
 
+## v1.0.4 - 2026-01-09
+See prereleases below.
+
 ## v1.0.4-preview.20260109.19 - 2026-01-09
 
 - No notable changes.
