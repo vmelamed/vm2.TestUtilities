@@ -2,6 +2,9 @@
 
 
 
+## v1.0.3 - 2026-01-16
+See prereleases below.
+
 ## v1.0.3-preview.20260116.64 - 2026-01-16
 
 - No notable changes.
