@@ -58,14 +58,15 @@ jobs:
           echo "::notice::Reason: ${{ inputs.reason }}"
 
   release:
-    name: Release - package and release NuGet release
+    name: Release - package and publish NuGet stable release
     needs:
       - get-params
     uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
     secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      # You don't need all three secrets, only the one corresponding to the chosen NuGet server in inputs.nuget-server or the default 'github'
       NUGET_API_GITHUB_KEY: ${{ secrets.NUGET_API_GITHUB_KEY }}
       NUGET_API_NUGET_KEY: ${{ secrets.NUGET_API_NUGET_KEY }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     permissions:
       contents: write # Required to checkout the code and create releases
       packages: write # Required to publish GitHub Packages NuGet packages
@@ -75,5 +76,5 @@ jobs:
       dotnet-version: ${{ vars.DOTNET_VERSION }}
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       nuget-server: ${{ needs.get-params.outputs.nuget-server }}
-      reason: ${{ inputs.reason || '' }}
+      reason: ${{ inputs.reason }}
       save-package-artifacts: ${{ fromJson(needs.get-params.outputs.save-package-artifacts) }}

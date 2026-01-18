@@ -12,6 +12,7 @@ on:
       semver-prerelease-prefix:
         description: "Prerelease prefix (e.g. preview, alpha, beta, rc1, etc.)"
         type: string
+        required: true
         default: preview
 
       reason:
