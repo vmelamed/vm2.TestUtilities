@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # default values for common flags
 declare -r default_quiet=false
@@ -214,12 +214,12 @@ declare -x common_switches="
         enables the output from the script function trace() and all other
         commands and functions that are otherwise silent.
         Initial value from \$VERBOSE or 'false'
-
-    --graphical | -gr
-        Sets the output dump table format to graphical.
-        Initial value from \$TABLE_FORMAT or 'graphical'
-
-    --markdown | -md
-        Sets the output dump table format to markdown.
-        Initial value from \$TABLE_FORMAT or 'graphical'
 "
+##  -graphical | -gr
+##     Sets the output dump table format to graphical.
+##     Initial value from \$TABLE_FORMAT or 'graphical'
+##
+##  -markdown | -md
+##     Sets the output dump table format to markdown.
+##     Initial value from \$TABLE_FORMAT or 'graphical'
+##
