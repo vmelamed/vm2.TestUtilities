@@ -15,6 +15,9 @@ on:
         description: Runner OS (or multiple OS-es separate by comma, e.g. 'ubuntu-latest,windows-latest')
         type: string
         default: ubuntu-latest
+        # Note: there is a known GitHub actions issue: the workflow dispatch UI doesn't properly handle JSON strings with quotes -
+        # it removes the quotes. E.g. entering '["ubuntu-latest"]' in the UI prompt removes the inner quotes and it becomes the
+        # invalid JSON: '[ubuntu-latest]'.
 
       preprocessor-symbols:
         description: Define semicolon-separated preprocessor symbols to pass to the compiler
@@ -23,9 +26,13 @@ on:
         default: ""
 
 env:
-  # Build the whole solution:
+  # The value of all *_PROJECTS variables must be specified as a string containing a JSON array of strings - path(s) to
+  # the project(s).
+  # Note the yaml folding indicator `>-`. It allows to enter single line, scalar, string values on multiple lines, which might
+  # be more readable, and writable (no escaping etc.).
   BUILD_PROJECTS: >-
     ["vm2.TestUtilities.slnx"]
+  # There is really nothing to test here, this is just a utility project.
   TEST_PROJECTS: "" # This project does not have tests, so TEST_PROJECTS is left empty:
   BENCHMARK_PROJECTS: "" # This project does not have benchmarks, so BENCHMARK_PROJECTS is left empty:
   PREPROCESSOR_SYMBOLS: ""
@@ -54,6 +61,8 @@ jobs:
       preprocessor-symbols: ${{ steps.init-params.outputs.preprocessor-symbols }}
       min-coverage-pct: ${{ steps.init-params.outputs.min-coverage-pct }}
       max-regression-pct: ${{ steps.init-params.outputs.max-regression-pct }}
+      minver-tag-prefix: ${{ steps.init-params.outputs.minver-tag-prefix }}
+      minver-prerelease-id: ${{ steps.init-params.outputs.minver-prerelease-id }}
     steps:
       - name: Gather parameters
         id: init-params

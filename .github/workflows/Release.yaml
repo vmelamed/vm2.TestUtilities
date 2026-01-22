@@ -43,7 +43,7 @@ jobs:
           nuget_server='${{ env.NUGET_SERVER }}'
           dotnet_version='${{ vars.DOTNET_VERSION }}'
           minver_tag_prefix='${{ vars.MINVERTAGPREFIX || 'v' }}'
-          reason="Stable Release (main tagged release)"
+          reason="Stable Release (main was manually tagged with a release tag)"
           save_package_artifacts='${{ vars.SAVE_PACKAGE_ARTIFACTS || 'false' }}'
 
           if [ '${{ github.event_name }}' == "workflow_dispatch" ]; then
@@ -89,5 +89,6 @@ jobs:
       dotnet-version: ${{ vars.DOTNET_VERSION }}
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       nuget-server: ${{ needs.get-params.outputs.nuget-server }}
-      reason: ${{ inputs.reason }}
+      reason: ${{ needs.get-params.outputs.reason }}
       save-package-artifacts: ${{ fromJson(needs.get-params.outputs.save-package-artifacts) }}
+      minver-tag-prefix: ${{ needs.get-params.outputs.minver-tag-prefix }}
