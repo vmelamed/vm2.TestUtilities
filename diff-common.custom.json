@@ -1,0 +1,14 @@
+{
+    "diff": {
+        "tool": "diff",
+        "command": "diff -a -w -B --strip-trailing-cr -s -y -W 167 --suppress-common-lines --color=auto \"$LOCAL\" \"$REMOTE\""
+    },
+    "merge": {
+        "tool": "code",
+        "command": "code --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$REMOTE\" \"$LOCAL\""
+    },
+    "action_overrides": {
+        "codecov.yml": "ignore",
+        "test.runsettings": "ignore"
+    }
+}
