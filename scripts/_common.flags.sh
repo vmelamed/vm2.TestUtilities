@@ -177,7 +177,7 @@ function display_usage_msg()
         echo ""
         exit 2
     fi
-    sync
+    sync || true
 
     # restore the tracing state
     if ((set_tracing_on == 1)); then
