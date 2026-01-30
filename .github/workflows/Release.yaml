@@ -26,12 +26,12 @@ env:
   NUGET_SERVER: ${{ vars.NUGET_SERVER || 'github' }}
 
 jobs:
-  ping:
-    name: Ping
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ping
-        run: echo "Release workflow triggered on ${{ github.ref }}"
+  # ping:
+  #   name: Ping
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Ping
+  #       run: echo "Release workflow triggered on ${{ github.ref }}"
 
   get-params:
     name: Prepare the parameters
