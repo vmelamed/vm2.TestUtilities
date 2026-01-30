@@ -1,12 +1,6 @@
-name: Publish NuGet Release
+name: Publish NuGet Stable Release
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - "v[0-9]*.[0-9]*.[0-9]*" # trigger on version tags like v1.2.3
-
   workflow_dispatch:
     inputs:
       reason:
@@ -30,10 +24,7 @@ jobs:
     name: Prepare the parameters
     runs-on: ubuntu-latest
     if: >+
-      ${{
-      github.event_name == 'workflow_dispatch' ||
-      ( !contains(github.ref_name,'-') && startsWith(github.ref, format('refs/tags/{0}', vars.MINVERTAGPREFIX || 'v')) )
-      }}
+      ${{ github.event_name == 'workflow_dispatch' }}
     outputs:
       dotnet-version: ${{ steps.init-params.outputs.dotnet-version }}
       package-projects: ${{ steps.init-params.outputs.package-projects }}
