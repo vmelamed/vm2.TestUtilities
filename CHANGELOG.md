@@ -5,6 +5,9 @@
 ## v1.1.0 - 2026-01-30
 See prereleases below.
 
+## v1.1.0 - 2026-01-30
+See prereleases below.
+
 ## Prerelease-2026-01-30 - 2026-01-30
 
 - No notable changes.
