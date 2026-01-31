@@ -63,8 +63,6 @@ jobs:
         id: init-params
         shell: bash
         run: |
-          source ${DEVOPS_LIB_DIR}/gh_core.sh
-
           # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
           build_projects='${{ env.BUILD_PROJECTS }}'
           test_projects='${{ env.TEST_PROJECTS }}'
@@ -90,18 +88,6 @@ jobs:
               echo "Unsupported event: ${{ github.event_name }}"
               exit 5
           fi
-
-          is_safe_json_array "$build_projects" || true
-          is_safe_json_array "$test_projects" || true
-          is_safe_json_array "$benchmark_projects" || true
-          is_safe_runners_os "$runners_os" || true
-          is_safe_dotnetVersion "$dotnet_version" || true
-          is_safe_configuration "$configuration" || true
-          validate_preprocessor_symbols "configuration" || true
-          is_safe_min_coverage_pct "$min_coverage_pct" || true
-          is_safe_max_regression_pct "$max_regression_pct" || true
-          validate_minverTagPrefix "$minver_tag_prefix" || true
-          is_safe_minverPrereleaseId "$minver_prerelease_id" || true
 
           # Set the outputs:
           {
