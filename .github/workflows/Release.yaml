@@ -23,8 +23,7 @@ jobs:
   get-params:
     name: Prepare the parameters
     runs-on: ubuntu-latest
-    if: >+
-      ${{ github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     outputs:
       dotnet-version: ${{ steps.init-params.outputs.dotnet-version }}
       package-projects: ${{ steps.init-params.outputs.package-projects }}
