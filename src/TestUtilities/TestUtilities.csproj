@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <RootNamespace>vm2.TestUtilities</RootNamespace>
@@ -22,8 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" />
-        <PackageReference Include="xunit.v3.extensibility.core" />
+        <PackageReference Include="FluentAssertions" Version="Unknown" />
+        <PackageReference Include="xunit.v3.extensibility.core" Version="Unknown" />
     </ItemGroup>
 
     <ItemGroup>

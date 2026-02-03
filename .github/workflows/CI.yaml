@@ -44,7 +44,7 @@ env:
     "ubuntu-latest"
     ]
 
-  PREPROCESSOR_SYMBOLS: ''
+  PREPROCESSOR_SYMBOLS: ""
 
   DOTNET_VERSION: ${{ vars.DOTNET_VERSION || '10.0.x' }} # The .NET SDK version to use.
   CONFIGURATION: ${{ vars.CONFIGURATION || 'Release' }} # The build configuration: Debug, Release, etc.
@@ -76,7 +76,6 @@ jobs:
         id: init-params
         shell: bash
         run: |
-          # the following outputs are invariant - no matter how we trigger the workflow, they stay the same as specified in env:
           build_projects='${{ env.BUILD_PROJECTS }}'
           test_projects='${{ env.TEST_PROJECTS }}'
           benchmark_projects='${{ env.BENCHMARK_PROJECTS }}'
