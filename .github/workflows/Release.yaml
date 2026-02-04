@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       reason:
-        description: "Reason for manual release"
+        description: "Reason for manual release (not allowed symbols: ; | & $ ` \\ < > ( ) { } new-line )"
         required: true
         type: string
 
