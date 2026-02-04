@@ -22,8 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="Unknown" />
-        <PackageReference Include="xunit.v3.extensibility.core" Version="Unknown" />
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="xunit.v3.extensibility.core" />
     </ItemGroup>
 
     <ItemGroup>
