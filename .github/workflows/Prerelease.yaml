@@ -16,7 +16,7 @@ on:
         default: preview
 
       reason:
-        description: "Reason for manual pre-release"
+        description: "Reason for manual pre-release (not allowed symbols: ; | & $ ` \ < > ( ) { } new-line )"
         required: true
         type: string
 
