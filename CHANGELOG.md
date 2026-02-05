@@ -1,49 +1,36 @@
 # Changelog
 
-
-
-
-
 ## v1.2.0 - 2026-02-04
-See prereleases below.
 
-
-
-
-
-
-
-## v1.1.0 - 2026-01-30
 See prereleases below.
 
 ## v1.1.0 - 2026-01-30
+
+See prereleases below.
+
+## v1.1.0 - 2026-01-30
+
 See prereleases below.
 
 ## Prerelease-2026-01-30 - 2026-01-30
 
 - No notable changes.
 
+## Prerelease-2026-01-30 - 2026-01-30
+
+- No notable changes.
 
 ## Prerelease-2026-01-30 - 2026-01-30
 
 - No notable changes.
 
-
 ## Prerelease-2026-01-30 - 2026-01-30
 
 - No notable changes.
 
-
 ## Prerelease-2026-01-30 - 2026-01-30
 
 - No notable changes.
-
-
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-- No notable changes.
-
 
 ## v1.0.3 - 2026-01-16
 See prereleases below.
@@ -52,20 +39,18 @@ See prereleases below.
 
 - No notable changes.
 
-
 ## v1.0.3-preview.20260116.63 - 2026-01-16
 
 - No notable changes.
-
 
 ## v1.0.5-preview.20260116.62 - 2026-01-16
 
 - No notable changes.
 
-
 ## v0.1.0-preview.20260116.61 - 2026-01-16
 
 - No notable changes.
+
 ## v0.1.0-preview.20260116.58 - 2026-01-16
 
 - No notable changes.
