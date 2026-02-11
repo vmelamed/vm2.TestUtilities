@@ -2,6 +2,9 @@
 
 
 
+## v1.2.2 - 2026-02-11
+See prereleases below.
+
 
 
 
