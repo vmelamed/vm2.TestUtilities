@@ -6,7 +6,7 @@ on:
     types:
       - completed
     branches:
-      - main # trigger on PR merge to main branch
+      - main # trigger after CI completes for pushes to main (PR merges only, verified by pull_requests check)
 
   workflow_dispatch:
     inputs:
