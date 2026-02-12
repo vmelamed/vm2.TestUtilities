@@ -8,7 +8,8 @@
         "command": "code --new-window --wait --diff \"$REMOTE\" \"$LOCAL\" \"$REMOTE\" \"$LOCAL\""
     },
     "action_overrides": {
-        "codecov.yml": "ignore",
-        "test.runsettings": "ignore"
+        "codecov.yaml": "ignore",
+        "coverage.settings.xml": "ignore",
+        "testconfig.json": "ignore"
     }
 }
