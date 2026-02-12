@@ -29,10 +29,6 @@ on:
         default: "SHORT_RUN" # *TODO* Adjust the default preprocessor symbols as needed.
 
 env:
-  # The value of all *_PROJECTS variables must be specified as a string containing a JSON array of strings - path(s) to
-  # the project(s).
-  # Note the yaml folding indicator `>-`. It allows to enter single line, scalar, string values on multiple lines, which might
-  # be more readable, and writable (no escaping etc.).
   BUILD_PROJECTS: >
     [
     "vm2.TestUtilities.slnx"
@@ -134,6 +130,7 @@ jobs:
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       BENCHER_API_TOKEN: ${{ secrets.BENCHER_API_TOKEN }}
+      REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
     permissions:
       contents: read # Required to checkout the code
       packages: read # Required to restore GitHub Packages NuGet packages
