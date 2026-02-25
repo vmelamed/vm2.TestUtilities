@@ -1,19 +1,37 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
 
+This format follows:
+
+- [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+- [Semantic Versioning](https://semver.org/)
+- Version numbers are produced by [MinVer](./ReleaseProcess.md) from Git tags.
+
+<!--
+## [Unreleased]
+### Added
+- (add new features here)
+### Changed
+- (add behavior changes here)
+### Fixed
+- (add bug fixes here)
+### Performance
+- (add performance improvements here)
+### Removed
+- (add removed/obsolete items here)
+### Security
+- (add security-related changes here)
+### Internal
+- (tooling, infrastructure, build pipeline changes)
+-->
 
 ## v1.2.2 - 2026-02-11
+
 See prereleases below.
 
-
-
-
-
-
-
-
-
 ## v1.2.1 - 2026-02-05
+
 See prereleases below.## v1.2.0 - 2026-02-04
 
 See prereleases below.
@@ -26,64 +44,13 @@ See prereleases below.
 
 See prereleases below.
 
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-
-## Prerelease-2026-01-30 - 2026-01-30
-
-- No notable changes.
-
-## v1.0.3 - 2026-01-16
-See prereleases below.
-
-## v1.0.3-preview.20260116.64 - 2026-01-16
-
-- No notable changes.
-
-## v1.0.3-preview.20260116.63 - 2026-01-16
-
-- No notable changes.
-
-## v1.0.5-preview.20260116.62 - 2026-01-16
-
-- No notable changes.
-
-## v0.1.0-preview.20260116.61 - 2026-01-16
-
-- No notable changes.
-
-## v0.1.0-preview.20260116.58 - 2026-01-16
-
-- No notable changes.
-
-## v0.1.0-preview.20260116.57 - 2026-01-16
-
-- No notable changes.
-
-## v0.1.0-preview.20260116.56 - 2026-01-16
-
-- No notable changes.
-
 ## v1.0.4 - 2026-01-09
 
 See prereleases below.
 
 ## v1.0.4-preview.20260109.19 - 2026-01-09
 
-- No notable changes.
+No notable changes.
 
 ## v1.0.6 - 2026-01-09
 
