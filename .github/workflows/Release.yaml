@@ -1,10 +1,11 @@
 name: Publish NuGet Stable Release
 
 on:
+  # we release from main only, on manual trigger only
   workflow_dispatch:
     inputs:
       reason:
-        description: "Reason for manual release (do not enter: ; | & $ ` \\ < > ( ) { } new-line )"
+        description: "Reason for manual release (do not use: ; | & $ ` \\ < > ( ) { } new-line )"
         required: true
         type: string
 
@@ -15,7 +16,6 @@ env:
     ]
 
   NUGET_SERVER: ${{ vars.NUGET_SERVER || 'github' }}
-
   PREPROCESSOR_SYMBOLS: ""
 
   CONFIGURATION: ${{ vars.CONFIGURATION || 'Release' }} # The build configuration: Debug, Release, etc.
@@ -55,11 +55,9 @@ jobs:
         run: |
           source $DEVOPS_LIB_DIR/gh_core.sh
 
-          package_projects='${{ env.PACKAGE_PROJECTS }}'
-          package_projects_len=$(is_safe_json_array "package_projects" "$defaultPackageProjects" is_safe_existing_file)
           dotnet_version='${{ env.DOTNET_VERSION }}'
           package_projects=$(is_safe_json_array '${{ env.PACKAGE_PROJECTS }}' '[]' is_safe_existing_file)
-          package_projects_len=$(jq length <<< "$package_projects")
+          package_projects_len=$(jq 'length // 0' <<< "$package_projects")
           preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }}'
           minver_tag_prefix='${{ env.MINVERTAGPREFIX }}'
           minver_prerelease_id='${{ env.MINVERDEFAULTPRERELEASEIDENTIFIERS }}'
