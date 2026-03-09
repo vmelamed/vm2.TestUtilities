@@ -28,10 +28,8 @@ env:
     [
     "src/TestUtilities/TestUtilities.csproj"
     ]
-
   NUGET_SERVER: ${{ vars.NUGET_SERVER || 'github' }}
   PREPROCESSOR_SYMBOLS: ""
-
   CONFIGURATION: ${{ vars.CONFIGURATION || 'Release' }} # The build configuration: Debug, Release, etc.
   DOTNET_VERSION: ${{ vars.DOTNET_VERSION || '10.0.x' }} # The .NET SDK version to use.
   MINVERTAGPREFIX: ${{ vars.MINVERTAGPREFIX || 'v' }} # The MinVer tag prefix.
