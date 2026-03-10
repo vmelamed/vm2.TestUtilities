@@ -37,15 +37,15 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  BUILD_PROJECTS: >
+  BUILD_PROJECTS: >-
     [
     "vm2.TestUtilities.slnx"
     ]
-  PACKAGE_PROJECTS: >
+  PACKAGE_PROJECTS: >-
     [
     "src/TestUtilities/TestUtilities.csproj"
     ]
-  RUNNERS_OS: >
+  RUNNERS_OS: >-
     [
     "ubuntu-latest"
     ]
