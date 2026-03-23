@@ -21,9 +21,8 @@ on:
 
       preprocessor-symbols:
         description: >-
-          Preprocessor symbols separated by semicolon, space, or comma, e.g. "SHORT_RUN FEAT_A" or
+          Preprocessor symbols separated by semicolon, space, or comma. E.g. "SHORT_RUN FEAT_A" or
           "SHORT_RUN;FEAT_A" or "SHORT_RUN,FEAT_A".
-
         type: string
         default: "SHORT_RUN"
 
@@ -166,23 +165,6 @@ jobs:
               exit 5
 
           fi
-
-          dump_vars --quiet --force \
-              -h "Validated Parameters" \
-              build_projects \
-              test_projects \
-              benchmark_projects \
-              package_projects \
-              runners_os \
-              dotnet_version \
-              configuration \
-              preprocessor_symbols \
-              min_coverage_pct \
-              max_regression_pct \
-              minver_tag_prefix \
-              minver_prerelease_id \
-              reset_benchmark_thresholds \
-              skip_push | to_summary
 
           # Set the outputs:
           args_to_github_output \

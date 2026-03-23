@@ -4,7 +4,7 @@ registries:
     type: nuget-feed
     url: https://nuget.pkg.github.com/vmelamed/index.json
     username: vmelamed
-    password: ${{secrets.GITHUB_TOKEN}}
+    password: ${{secrets.GH_PACKAGES_TOKEN}}
 
 updates:
   # Update NuGet packages
