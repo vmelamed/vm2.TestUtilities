@@ -174,11 +174,6 @@ jobs:
               benchmark_projects \
               package_projects \
               runners_os \
-              build_projects_len \
-              test_projects_len \
-              benchmark_projects_len \
-              package_projects_len \
-              runners_os_len \
               dotnet_version \
               configuration \
               preprocessor_symbols \
