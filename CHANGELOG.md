@@ -6,7 +6,9 @@ See prereleases below.
 
 ## v1.2.1 - 2026-02-05
 
-See prereleases below.## v1.2.0 - 2026-02-04
+See prereleases below.
+
+## v1.2.0 - 2026-02-04
 
 See prereleases below.
 
@@ -110,8 +112,6 @@ All notable changes to **vm2.TestUtilities** will be documented in this file.
 ### Added
 
 - Initial CI build/test/benchmark workflow and prerelease wiring.
-
-# Changelog
 
 ## [Unreleased]
 
