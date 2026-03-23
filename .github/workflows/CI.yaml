@@ -68,10 +68,15 @@ jobs:
     if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]')
     outputs:
       build-projects: ${{ steps.gather-params.outputs.build-projects }}
+      build-projects-len: ${{ steps.gather-params.outputs.build-projects-len }}
       test-projects: ${{ steps.gather-params.outputs.test-projects }}
+      test-projects-len: ${{ steps.gather-params.outputs.test-projects-len }}
       benchmark-projects: ${{ steps.gather-params.outputs.benchmark-projects }}
+      benchmark-projects-len: ${{ steps.gather-params.outputs.benchmark-projects-len }}
       package-projects: ${{ steps.gather-params.outputs.package-projects }}
+      package-projects-len: ${{ steps.gather-params.outputs.package-projects-len }}
       runners-os: ${{ steps.gather-params.outputs.runners-os }}
+      runners-os-len: ${{ steps.gather-params.outputs.runners-os-len }}
       dotnet-version: ${{ steps.gather-params.outputs.dotnet-version }}
       configuration: ${{ steps.gather-params.outputs.configuration }}
       preprocessor-symbols: ${{ steps.gather-params.outputs.preprocessor-symbols }}
@@ -92,10 +97,10 @@ jobs:
         run: |
           source $DEVOPS_LIB_DIR/gh_core.sh
 
-          build_projects='${{ env.BUILD_PROJECTS || '' }}'
-          test_projects='${{ env.TEST_PROJECTS || '' }}'
-          benchmark_projects='${{ env.BENCHMARK_PROJECTS || '' }}'
-          package_projects='${{ env.PACKAGE_PROJECTS || '' }}'
+          build_projects='${{ env.BUILD_PROJECTS || '[]' }}'
+          test_projects='${{ env.TEST_PROJECTS || '[]' }}'
+          benchmark_projects='${{ env.BENCHMARK_PROJECTS || '[]' }}'
+          package_projects='${{ env.PACKAGE_PROJECTS || '[]' }}'
           runners_os='${{ env.RUNNERS_OS || '["ubuntu-latest"]' }}'
           dotnet_version='${{ env.DOTNET_VERSION || '10.0.x' }}'
           configuration='${{ env.CONFIGURATION || 'Release' }}'
@@ -166,13 +171,25 @@ jobs:
 
           fi
 
+          # Calculate array lengths
+          build_projects_len=$(jq 'length // 0' <<< "$build_projects")
+          test_projects_len=$(jq 'length // 0' <<< "$test_projects")
+          benchmark_projects_len=$(jq 'length // 0' <<< "$benchmark_projects")
+          package_projects_len=$(jq 'length // 0' <<< "$package_projects")
+          runners_os_len=$(jq 'length // 0' <<< "$runners_os")
+
           # Set the outputs:
           args_to_github_output \
               build_projects \
+              build_projects_len \
               test_projects \
+              test_projects_len \
               benchmark_projects \
+              benchmark_projects_len \
               package_projects \
+              package_projects_len \
               runners_os \
+              runners_os_len \
               dotnet_version \
               configuration \
               preprocessor_symbols \
