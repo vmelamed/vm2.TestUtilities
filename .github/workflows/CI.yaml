@@ -221,6 +221,11 @@ jobs:
       benchmark-projects: ${{ needs.prerun-ci.outputs.benchmark-projects }}
       package-projects: ${{ needs.prerun-ci.outputs.package-projects }}
       runners-os: ${{ needs.prerun-ci.outputs.runners-os }}
+      build-projects-len: ${{ needs.prerun-ci.outputs.build-projects-len }}
+      test-projects-len: ${{ needs.prerun-ci.outputs.test-projects-len }}
+      benchmark-projects-len: ${{ needs.prerun-ci.outputs.benchmark-projects-len }}
+      package-projects-len: ${{ needs.prerun-ci.outputs.package-projects-len }}
+      runners-os-len: ${{ needs.prerun-ci.outputs.runners-os-len }}
       dotnet-version: ${{ needs.prerun-ci.outputs.dotnet-version }}
       configuration: ${{ needs.prerun-ci.outputs.configuration }}
       preprocessor-symbols: ${{ needs.prerun-ci.outputs.preprocessor-symbols }}

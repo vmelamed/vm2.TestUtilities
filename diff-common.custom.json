@@ -6,10 +6,5 @@
     "merge": {
         "tool": "code",
         "command": "code --new-window --wait --diff \"$REMOTE\" \"$LOCAL\" \"$REMOTE\" \"$LOCAL\""
-    },
-    "action_overrides": {
-        "codecov.yaml": "ignore",
-        "coverage.settings.xml": "ignore",
-        "testconfig.json": "ignore"
     }
 }
