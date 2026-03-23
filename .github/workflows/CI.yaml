@@ -21,7 +21,7 @@ on:
 
       preprocessor-symbols:
         description: >-
-          Preprocessor symbols separated by semicolon, space, or comma. E.g. "SHORT_RUN FEAT_A" or
+          Preprocessor symbols separated by semicolon, space, or comma, e.g. "SHORT_RUN FEAT_A" or
           "SHORT_RUN;FEAT_A" or "SHORT_RUN,FEAT_A".
 
         type: string
