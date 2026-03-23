@@ -27,7 +27,7 @@ on:
         default: "SHORT_RUN"
 
       reset-benchmark-thresholds:
-        description: Set to "true" to reset Bencher thresholds if some degradation is expected.
+        description: Check to reset Bencher thresholds if some degradation is expected.
         type: boolean
         default: false
 
