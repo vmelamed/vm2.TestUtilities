@@ -68,15 +68,10 @@ jobs:
     if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]')
     outputs:
       build-projects: ${{ steps.gather-params.outputs.build-projects }}
-      build-projects-len: ${{ steps.gather-params.outputs.build-projects-len }}
       test-projects: ${{ steps.gather-params.outputs.test-projects }}
-      test-projects-len: ${{ steps.gather-params.outputs.test-projects-len }}
       benchmark-projects: ${{ steps.gather-params.outputs.benchmark-projects }}
-      benchmark-projects-len: ${{ steps.gather-params.outputs.benchmark-projects-len }}
       package-projects: ${{ steps.gather-params.outputs.package-projects }}
-      package-projects-len: ${{ steps.gather-params.outputs.package-projects-len }}
       runners-os: ${{ steps.gather-params.outputs.runners-os }}
-      runners-os-len: ${{ steps.gather-params.outputs.runners-os-len }}
       dotnet-version: ${{ steps.gather-params.outputs.dotnet-version }}
       configuration: ${{ steps.gather-params.outputs.configuration }}
       preprocessor-symbols: ${{ steps.gather-params.outputs.preprocessor-symbols }}
@@ -171,25 +166,13 @@ jobs:
 
           fi
 
-          # Calculate array lengths
-          build_projects_len=$(jq 'length // 0' <<< "$build_projects")
-          test_projects_len=$(jq 'length // 0' <<< "$test_projects")
-          benchmark_projects_len=$(jq 'length // 0' <<< "$benchmark_projects")
-          package_projects_len=$(jq 'length // 0' <<< "$package_projects")
-          runners_os_len=$(jq 'length // 0' <<< "$runners_os")
-
           # Set the outputs:
           args_to_github_output \
               build_projects \
-              build_projects_len \
               test_projects \
-              test_projects_len \
               benchmark_projects \
-              benchmark_projects_len \
               package_projects \
-              package_projects_len \
               runners_os \
-              runners_os_len \
               dotnet_version \
               configuration \
               preprocessor_symbols \
@@ -221,11 +204,6 @@ jobs:
       benchmark-projects: ${{ needs.prerun-ci.outputs.benchmark-projects }}
       package-projects: ${{ needs.prerun-ci.outputs.package-projects }}
       runners-os: ${{ needs.prerun-ci.outputs.runners-os }}
-      build-projects-len: ${{ needs.prerun-ci.outputs.build-projects-len }}
-      test-projects-len: ${{ needs.prerun-ci.outputs.test-projects-len }}
-      benchmark-projects-len: ${{ needs.prerun-ci.outputs.benchmark-projects-len }}
-      package-projects-len: ${{ needs.prerun-ci.outputs.package-projects-len }}
-      runners-os-len: ${{ needs.prerun-ci.outputs.runners-os-len }}
       dotnet-version: ${{ needs.prerun-ci.outputs.dotnet-version }}
       configuration: ${{ needs.prerun-ci.outputs.configuration }}
       preprocessor-symbols: ${{ needs.prerun-ci.outputs.preprocessor-symbols }}
