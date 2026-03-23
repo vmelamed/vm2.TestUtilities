@@ -167,6 +167,28 @@ jobs:
 
           fi
 
+          dump_vars --quiet --force \
+              -h "Validated Parameters" \
+              build_projects \
+              test_projects \
+              benchmark_projects \
+              package_projects \
+              runners_os \
+              build_projects_len \
+              test_projects_len \
+              benchmark_projects_len \
+              package_projects_len \
+              runners_os_len \
+              dotnet_version \
+              configuration \
+              preprocessor_symbols \
+              min_coverage_pct \
+              max_regression_pct \
+              minver_tag_prefix \
+              minver_prerelease_id \
+              reset_benchmark_thresholds \
+              skip_push | to_summary
+
           # Set the outputs:
           args_to_github_output \
               build_projects \
