@@ -22,7 +22,7 @@ env:
   MINVERTAGPREFIX: ${{ vars.MINVERTAGPREFIX || 'v' }} # The MinVer tag prefix.
   MINVERDEFAULTPRERELEASEIDENTIFIERS: ${{ vars.MINVERDEFAULTPRERELEASEIDENTIFIERS || 'preview.0' }} # The MinVer default pre-release identifiers.
   SAVE_PACKAGE_ARTIFACTS: ${{ vars.SAVE_PACKAGE_ARTIFACTS || 'false' }} # Set to "true" to save package artifacts.
-  VERBOSE: ${{ vars.VERBOSE || 'false' }} # Set to "true" to enable verbose logging in scripts.
+  VERBOSE: ${{ vars.VERBOSE }} # Set to variable to "true" to enable verbose logging in scripts.
 
 jobs:
   get-params:
