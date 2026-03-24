@@ -1,6 +1,18 @@
 # Changelog
 
 
+
+## v1.3.0 - 2026-03-24
+See prereleases below.
+
+## v1.3.0-preview.4 - 2026-03-24
+See prereleases below.
+
+## v1.3.0-preview.2 - 2026-03-23
+See prereleases below.
+
+## v1.3.0-preview.1 - 2026-03-23
+See prereleases below.
 ## v1.3.0-preview.4 - 2026-03-24
 
 ### Internal
