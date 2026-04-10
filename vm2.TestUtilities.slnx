@@ -1,17 +1,29 @@
 <Solution>
-    <Folder Name="/.github/" />
+    <Folder Name="/.github/">
+        <File Path=".github/dependabot.yml" />
+    </Folder>
     <Folder Name="/.github/workflows/">
+        <File Path=".github/workflows/AutoMerge.yaml" />
         <File Path=".github/workflows/CI.yaml" />
+        <File Path=".github/workflows/ClearCache.yaml" />
         <File Path=".github/workflows/Prerelease.yaml" />
         <File Path=".github/workflows/Release.yaml" />
     </Folder>
-    <Folder Name="/Solution Items/">
+    <Folder Name="/changelog/">
+        <File Path="changelog/cliff.prerelease.toml" />
+        <File Path="changelog/cliff.release-header.toml" />
+    </Folder>
+    <Folder Name="/solution Items/">
         <File Path=".editorconfig" />
+        <File Path=".gitattributes" />
         <File Path=".gitignore" />
+        <File Path="CHANGELOG.md" />
+        <File Path="diff-shared.custom.json" />
         <File Path="Directory.Build.props" />
         <File Path="Directory.Packages.props" />
         <File Path="global.json" />
         <File Path="LICENSE" />
+        <File Path="NuGet.config" />
         <File Path="README.md" />
     </Folder>
     <Folder Name="/src/">
