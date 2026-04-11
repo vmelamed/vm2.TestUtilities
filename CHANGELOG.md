@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v1.4.0-preview.1 - 2026-04-11
+
+### Added
+
+- add TestBase class for enhanced test output handling and Fluent Assertions integration
+
+
+### Fixed
+
+- update git-cliff template for v2.x compatibility
+- add spacing for better readability in changelog template
+
+
+### Internal
+
+- update DisableTestingPlatformServerCapability condition for Visual Studio builds
+- improve documentation in TestBase class and update usings for FluentAssertionsExtensions
+- enhance class summary for TestUtilities with detailed description of utility methods
+
+
+## v1.3.1 - 2026-04-10
+
+### Internal
+
+- promote to stable v1.3.1 [skip ci]
+- update changelog for v1.3.1 [skip ci]
+
+
 
 ## v1.3.1 - 2026-04-10
 See prereleases below.
