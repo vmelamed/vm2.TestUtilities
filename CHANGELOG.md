@@ -1,6 +1,12 @@
 # Changelog
 
 
+
+## v1.4.0 - 2026-04-11
+See prereleases below.
+
+## v1.4.0-preview.1 - 2026-04-11
+See prereleases below.
 ## v1.4.0-preview.1 - 2026-04-11
 
 ### Added
