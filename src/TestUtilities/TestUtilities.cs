@@ -4,7 +4,10 @@
 namespace vm2.TestUtilities;
 
 /// <summary>
-/// Class TestUtilities.
+/// Class TestUtilities. Provides utility methods for unit tests, such as methods to generate strings describing the caller's
+/// file and line number, and an optional description. These can be used in test output to help identify where a test is being
+/// executed from. Also, very useful in test cases where the test data is defined in a separate file and the test method needs
+/// to output the location of the test data in the file.
 /// </summary>
 [ExcludeFromCodeCoverage]
 public static partial class TestUtilities
