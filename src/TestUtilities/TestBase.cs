@@ -4,9 +4,8 @@
 namespace vm2.TestUtilities;
 
 /// <summary>
-/// Class BaseTest. Inherit the tests from this class to have access to the test output helper and utility methods for
-/// describing where the test is located in the source code. And also to avoid the warning about the the "Fluent Assertions"
-/// license.
+/// Base class for tests that need access to an <see cref="ITestOutputHelper"/> for captured test output and the
+/// Fluent Assertions test initialization performed by the constructor.
 /// </summary>
 public abstract class TestBase
 {
@@ -18,14 +17,13 @@ public abstract class TestBase
     /// not visible in the console output when running tests from the command line.
     /// </summary>
     /// <value>The test output helper.</value>
-    /// </summary>
     protected ITestOutputHelper Out => _output;
 
     /// <summary>
     /// Outputs a string to the test output helper. This is useful for debugging tests and for writing test output that is
     /// visible in the test results.
     /// </summary>
-    /// <param name="message"></param>
+    /// <param name="message">A message to be output to the test's output.</param>
     public void WriteLine(string message) => _output.WriteLine(message);
 
     /// <summary>
@@ -35,7 +33,7 @@ public abstract class TestBase
     /// Fluent Assertions and for avoiding warnings about the license when running tests.
     /// The test output helper is captured by the test framework and is visible in the test results.
     /// </summary>
-    /// <param name="output"></param>
+    /// <param name="output">The test output helper used to write diagnostic information to the test results.</param>
     public TestBase(ITestOutputHelper output)
     {
         FluentAssertionsInitializer.AcknowledgeSoftWarning();
