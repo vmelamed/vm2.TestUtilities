@@ -149,12 +149,13 @@ jobs:
       - name: Post reminder
         shell: bash
         run: |
-          echo "::notice::Pre-release completed. Now is a good time to review/edit CHANGELOG.md before stable release."
+          echo "::notice::Pre-release completed. Now is a good time to review/edit CHANGELOG.md before stable release. CHANGELOG.md only - do not mix-in other files."
           {
             echo "## CHANGELOG Reminder"
             echo
             echo "> [!IMPORTANT]"
             echo "> Pre-release completed. Now is a good time to review/edit CHANGELOG.md before stable release."
+            echo "> CHANGELOG.md only - do not mix-in other files."
             echo
             echo "Recommended: keep changelog updates in a dedicated commit or PR before the release workflow."
           } >> "$GITHUB_STEP_SUMMARY"
