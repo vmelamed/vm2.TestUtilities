@@ -1,5 +1,20 @@
 # Changelog
 
+
+## v1.4.0-preview.2 - 2026-04-12
+
+### Internal
+
+- Clean-up
+
+
+## v1.4.0 - 2026-04-11
+
+### Internal
+
+- promote to stable v1.4.0 [skip ci]
+- update changelog for v1.4.0 [skip ci]
+
 ## v1.4.0 - 2026-04-11
 
 See prereleases below.
