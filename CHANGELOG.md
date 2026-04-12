@@ -1,31 +1,29 @@
 # Changelog
 
-
-
 ## v1.4.0 - 2026-04-11
+
 See prereleases below.
 
 ## v1.4.0-preview.1 - 2026-04-11
+
 See prereleases below.
+
 ## v1.4.0-preview.1 - 2026-04-11
 
 ### Added
 
 - add TestBase class for enhanced test output handling and Fluent Assertions integration
 
-
 ### Fixed
 
 - update git-cliff template for v2.x compatibility
 - add spacing for better readability in changelog template
-
 
 ### Internal
 
 - update DisableTestingPlatformServerCapability condition for Visual Studio builds
 - improve documentation in TestBase class and update usings for FluentAssertionsExtensions
 - enhance class summary for TestUtilities with detailed description of utility methods
-
 
 ## v1.3.1 - 2026-04-10
 
@@ -34,13 +32,14 @@ See prereleases below.
 - promote to stable v1.3.1 [skip ci]
 - update changelog for v1.3.1 [skip ci]
 
-
-
 ## v1.3.1 - 2026-04-10
+
 See prereleases below.
 
 ## v1.3.1-preview.1 - 2026-04-10
+
 See prereleases below.
+
 ## v1.3.1-preview.1 - 2026-04-10
 
 ### Internal
@@ -53,18 +52,22 @@ DevOps changes only.
 
 DevOps changes only.
 
-
 ## v1.3.0 - 2026-03-24
+
 See prereleases below.
 
 ## v1.3.0-preview.4 - 2026-03-24
+
 See prereleases below.
 
 ## v1.3.0-preview.2 - 2026-03-23
+
 See prereleases below.
 
 ## v1.3.0-preview.1 - 2026-03-23
+
 See prereleases below.
+
 ## v1.3.0-preview.4 - 2026-03-24
 
 ### Internal
@@ -88,6 +91,7 @@ DevOps changes only.
 ### Internal
 
 DevOps changes only.
+
 ## v1.2.2 - 2026-02-11
 
 See prereleases below.
@@ -229,12 +233,12 @@ All notable changes to **vm2.TestUtilities** will be documented in this file.
 >
 > **Removed**
 >
-> - add removed/obsolete items here
-> - commit prefix for git-cliff: `revert:`
+> - add removed/obsolete items
+> - commit prefix for git-cliff: `revert:` or `remove:`
 >
 > **Security**
 >
-> - add security-related changes here
+> - add security-related changes
 > - commit prefix for git-cliff: `security:`
 >
 > **Internal**
