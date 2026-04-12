@@ -1,6 +1,13 @@
 # Changelog
 
 
+## v1.4.1-preview.1 - 2026-04-12
+
+### Fixed
+
+- add support for .slnx files
+
+
 ## v1.4.0-preview.2 - 2026-04-12
 
 ### Internal
