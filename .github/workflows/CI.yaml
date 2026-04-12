@@ -37,7 +37,7 @@ concurrency:
 env:
   BUILD_PROJECTS: >-
     [
-    "vm2.TestUtilities.slnx"
+    "./vm2.TestUtilities.slnx"
     ]
   PACKAGE_PROJECTS: >-
     [
