@@ -17,8 +17,8 @@ See prereleases below.
 - Clean-up
 - enable both doc and docs in CHANGELOG.md
 - update changelog
-- promote to stable v1.4.0 [skip ci]
-- update changelog for v1.4.0 [skip ci]
+- promote to stable v1.4.1
+- update changelog for v1.4.1
 
 ## v1.4.0 - 2026-04-11
 
@@ -26,7 +26,7 @@ See prereleases below.
 
 ## v1.4.0-preview.2 - 2026-04-11
 
-See prereleases below.
+No notable changes beyond v1.4.0-preview.1.
 
 ## v1.4.0-preview.1 - 2026-04-11
 
@@ -120,7 +120,7 @@ No notable changes.
 
 ## v1.0.4-preview.20260109.14 - 2026-01-09
 
-- No notable changes.
+No notable changes.
 
 ## v1.0.4-preview.20260109.13 - 2026-01-09
 
