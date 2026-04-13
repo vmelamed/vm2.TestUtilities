@@ -1,5 +1,13 @@
 # Changelog
 
+
+## v1.4.1-preview.2 - 2026-04-13
+
+### Internal
+
+- enable both doc and docs in CHANGELOG.md
+- update changelog
+
 ## v1.4.1-preview.2 - 2026-04-12
 
 ### Fixed
