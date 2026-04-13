@@ -1,5 +1,21 @@
 # Changelog
 
+
+## v1.4.1-preview.3 - 2026-04-13
+
+### Internal
+
+- normalize version history
+- addressed minor GH Copilot review comments
+
+
+## v1.4.1 - 2026-04-13
+
+### Internal
+
+- promote to stable v1.4.1 [skip ci]
+- update changelog for v1.4.1 [skip ci]
+
 ## v1.4.1 - 2026-04-13
 
 See prereleases below.
