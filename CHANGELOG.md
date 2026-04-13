@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.4.2-preview.1 - 2026-04-13
+
+### Fixed
+
+- update commit parser for documentation messages in changelog
+
+
+### Internal
+
+- refresh repo scaffolding and changelog templates
+
+
 ## v1.4.1-preview.3 - 2026-04-13
 
 ### Internal
