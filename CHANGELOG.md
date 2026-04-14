@@ -1,6 +1,21 @@
 # Changelog
 
 
+## v1.4.2-preview.2 - 2026-04-14
+
+### Internal
+
+- sync template round-2 changelog and commit message template
+
+
+## v1.4.2 - 2026-04-13
+
+### Internal
+
+- promote to stable v1.4.2 [skip ci]
+- update changelog for v1.4.2 [skip ci]
+
+
 
 ## v1.4.2 - 2026-04-13
 See prereleases below.
