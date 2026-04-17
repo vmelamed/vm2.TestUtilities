@@ -5,6 +5,18 @@
 
 
 
+## v1.4.4-preview.2 - 2026-04-17
+
+
+### Internal
+
+- update PR template checklist by removing performance and test coverage items
+
+
+
+
+
+
 ## v1.4.4-preview.1 - 2026-04-17
 
 
