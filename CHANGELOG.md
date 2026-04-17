@@ -5,6 +5,20 @@
 
 
 
+## v1.4.4-preview.1 - 2026-04-17
+
+
+### Internal
+
+- add workflow to refresh NuGet lock files
+- update dependencies
+- update dependencies
+
+
+
+
+
+
 
 ## v1.4.4 - 2026-04-14
 
