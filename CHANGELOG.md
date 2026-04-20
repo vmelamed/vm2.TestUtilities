@@ -5,6 +5,18 @@
 
 
 
+## v1.4.4-preview.3 - 2026-04-20
+
+
+### Internal
+
+- fix formatting in changelog body for consistency
+
+
+
+
+
+
 ## v1.4.4-preview.2 - 2026-04-17
 
 
