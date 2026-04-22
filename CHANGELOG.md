@@ -1,48 +1,10 @@
 # Changelog
 
+## v1.4.4 - 2026-04-17
 
-
-
-
-
-## v1.4.4-preview.4 - 2026-04-22
-
-
-### Internal
-
-- update dependencies and rebuild the packages.lock.json files
-
-
-
-
-
-
-## v1.4.4-preview.3 - 2026-04-20
-
-
-### Internal
-
-- fix formatting in changelog body for consistency
-
-
-
-
-
-
-## v1.4.4-preview.2 - 2026-04-17
-
-
-### Internal
-
-- update PR template checklist by removing performance and test coverage items
-
-
-
-
-
+See prereleases below.
 
 ## v1.4.4-preview.1 - 2026-04-17
-
 
 ### Internal
 
@@ -50,65 +12,33 @@
 - update dependencies
 - update dependencies
 
-
-
-
-
-
-
-## v1.4.4 - 2026-04-14
-
-See prereleases below.
-
-
-
-
-
 ## v1.4.3-preview.1 - 2026-04-14
-
 
 ### Internal
 
 - sync round-3 changelog templates
 
-
-## v1.4.3 - 2026-04-14
-See prereleases below.
-## v1.4.2-preview.2 - 2026-04-14
-
-### Internal
-
-- sync template round-2 changelog and commit message template
-
-
 ## v1.4.2 - 2026-04-13
 
-### Internal
-
-- promote to stable v1.4.2 [skip ci]
-- update changelog for v1.4.2 [skip ci]
-
-
-
-## v1.4.2 - 2026-04-13
 See prereleases below.
 
 ## v1.4.2-preview.1 - 2026-04-13
+
 See prereleases below.
 
 ## v1.4.1-preview.3 - 2026-04-13
+
 See prereleases below.
+
 ## v1.4.2-preview.1 - 2026-04-13
 
 ### Fixed
 
 - update commit parser for documentation messages in changelog
 
-
 ### Internal
 
 - refresh repo scaffolding and changelog templates
-
 
 ## v1.4.1-preview.3 - 2026-04-13
 
@@ -116,7 +46,6 @@ See prereleases below.
 
 - normalize version history
 - addressed minor GH Copilot review comments
-
 
 ## v1.4.1 - 2026-04-13
 
@@ -170,14 +99,14 @@ No notable changes beyond v1.4.0-preview.1.
 - improve documentation in TestBase class and update usings for FluentAssertionsExtensions
 - enhance class summary for TestUtilities with detailed description of utility methods
 
-## v1.3.1 - 2026-04-10
+## v1.4.1 - 2026-04-10
 
 ### Internal
 
 - promote to stable v1.3.1 [skip ci]
 - update changelog for v1.3.1 [skip ci]
 
-## v1.3.1-preview.1 - 2026-04-10
+## v1.4.1-preview.1 - 2026-04-10
 
 ### Internal
 
@@ -227,31 +156,9 @@ See prereleases below.
 
 See prereleases below.
 
-## v1.0.6 - 2026-01-09
+## v1.0.3 - 2026-01-16
 
 See prereleases below.
-
-## v1.0.5 - 2026-01-09
-
-See prereleases below.
-
-## v1.0.4 - 2026-01-09
-
-See prereleases below.
-
-## v1.0.4-preview.20260109.19 - 2026-01-09
-
-No notable changes.
-
-## v1.0.4-preview.20260109.14 - 2026-01-09
-
-No notable changes.
-
-## v1.0.4-preview.20260109.13 - 2026-01-09
-
-### Changed
-
-- Changelog regenerated via git-cliff; no functional code changes captured.
 
 ## v1.0.3-preview.20260109.9 - 2026-01-09
 
