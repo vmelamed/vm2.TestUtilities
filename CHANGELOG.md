@@ -1,5 +1,27 @@
 # Changelog
 
+
+
+
+
+
+## v1.4.4-preview.1 - 2026-04-22
+
+
+### Internal
+
+- add workflow to refresh NuGet lock files
+- update dependencies
+- update dependencies
+- update changelog for v1.4.4-preview.1 [skip ci]
+- update PR template checklist by removing performance and test coverage items
+- update changelog for v1.4.4-preview.2 [skip ci]
+- fix formatting in changelog body for consistency
+- update changelog for v1.4.4-preview.3 [skip ci]
+- update dependencies and rebuild the packages.lock.json files
+- update changelog for v1.4.4-preview.4 [skip ci]
+- fixing the CHANGELOG.md: deleted tags out of order due to a bug in versioning script
+
 ## v1.4.4 - 2026-04-17
 
 See prereleases below.
