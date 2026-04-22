@@ -1,45 +1,13 @@
 # Changelog
 
-
-
-
-
-
 ## v1.4.5-preview.1 - 2026-04-22
-
 
 ### Internal
 
 - add shared conventions document for vm2 packages for claude [skip ci]
 - diff-shared
 
-
-
-
-
-
-## v1.4.4-preview.1 - 2026-04-22
-
-
-### Internal
-
-- add workflow to refresh NuGet lock files
-- update dependencies
-- update dependencies
-- update changelog for v1.4.4-preview.1 [skip ci]
-- update PR template checklist by removing performance and test coverage items
-- update changelog for v1.4.4-preview.2 [skip ci]
-- fix formatting in changelog body for consistency
-- update changelog for v1.4.4-preview.3 [skip ci]
-- update dependencies and rebuild the packages.lock.json files
-- update changelog for v1.4.4-preview.4 [skip ci]
-- fixing the CHANGELOG.md: deleted tags out of order due to a bug in versioning script
-
-## v1.4.4 - 2026-04-17
-
-See prereleases below.
-
-## v1.4.4-preview.1 - 2026-04-17
+## v1.4.4 - 2026-04-14
 
 ### Internal
 
@@ -47,21 +15,13 @@ See prereleases below.
 - update dependencies
 - update dependencies
 
-## v1.4.3-preview.1 - 2026-04-14
+## v1.4.3 - 2026-04-14
 
 ### Internal
 
 - sync round-3 changelog templates
 
 ## v1.4.2 - 2026-04-13
-
-See prereleases below.
-
-## v1.4.2-preview.1 - 2026-04-13
-
-See prereleases below.
-
-## v1.4.1-preview.3 - 2026-04-13
 
 See prereleases below.
 
@@ -74,20 +34,6 @@ See prereleases below.
 ### Internal
 
 - refresh repo scaffolding and changelog templates
-
-## v1.4.1-preview.3 - 2026-04-13
-
-### Internal
-
-- normalize version history
-- addressed minor GH Copilot review comments
-
-## v1.4.1 - 2026-04-13
-
-### Internal
-
-- promote to stable v1.4.1 [skip ci]
-- update changelog for v1.4.1 [skip ci]
 
 ## v1.4.1 - 2026-04-13
 
@@ -113,10 +59,6 @@ See prereleases below.
 
 See prereleases below.
 
-## v1.4.0-preview.2 - 2026-04-11
-
-No notable changes beyond v1.4.0-preview.1.
-
 ## v1.4.0-preview.1 - 2026-04-11
 
 ### Added
@@ -134,14 +76,14 @@ No notable changes beyond v1.4.0-preview.1.
 - improve documentation in TestBase class and update usings for FluentAssertionsExtensions
 - enhance class summary for TestUtilities with detailed description of utility methods
 
-## v1.4.1 - 2026-04-10
+## v1.3.1 - 2026-04-10
 
 ### Internal
 
 - promote to stable v1.3.1 [skip ci]
 - update changelog for v1.3.1 [skip ci]
 
-## v1.4.1-preview.1 - 2026-04-10
+## v1.3.1-preview.1 - 2026-04-10
 
 ### Internal
 
@@ -195,13 +137,6 @@ See prereleases below.
 
 See prereleases below.
 
-## v1.0.3-preview.20260109.9 - 2026-01-09
-
-### Fixed
-
-- Correct workflow project name and finalize CI wiring for template consumers.
-- Normalize Directory.*.props layout and workflow variable naming (save-package-artifacts).
-
 ## v1.0.2 - 2025-12-31
 
 ### Fixed
@@ -233,12 +168,6 @@ See prereleases below.
 ### Added
 
 - Initial stable release tag aligned with release workflow updates.
-
-## v0.1.0-preview.20251231.7 - 2025-12-31
-
-### Fixed
-
-- Correct save-package-artifacts key in prerelease workflow; improve packaging paths.
 
 ## v0.1.0-preview.20251226.10 - 2025-12-26
 
