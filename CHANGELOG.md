@@ -1,12 +1,6 @@
 # Changelog
 
-
-
-
-
-
 ## v1.4.5-preview.2 - 2026-04-22
-
 
 ### Fixed
 
