@@ -1,5 +1,17 @@
 # Changelog
 
+
+
+
+
+
+## v1.4.5-preview.2 - 2026-04-22
+
+
+### Fixed
+
+- rewrite CHANGELOG to remove invalid/duplicate prerelease sections and correct mislabeled v1.3.1 entries
+
 ## v1.4.5-preview.1 - 2026-04-22
 
 ### Internal
