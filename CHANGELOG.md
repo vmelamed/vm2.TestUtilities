@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.5-preview.3 - 2026-04-24
+
+### Fixed
+
+- update changelog templates to improve formatting and consistency [skip ci]
+
+### Internal
+
+- clean-up changelog formatting [skip ci]
+
 ## v1.4.5-preview.2 - 2026-04-22
 
 ### Fixed
