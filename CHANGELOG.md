@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.5 - 2026-04-24
+
+See prereleases below.
+
 ## v1.4.5-preview.3 - 2026-04-24
 
 ### Fixed
