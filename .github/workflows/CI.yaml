@@ -39,6 +39,8 @@ env:
     [
     "./vm2.TestUtilities.slnx"
     ]
+  TEST_PROJECTS: "[]"
+  BENCHMARK_PROJECTS: "[]"
   PACKAGE_PROJECTS: >-
     [
     "src/TestUtilities/TestUtilities.csproj"
