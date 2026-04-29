@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.6-preview.1 - 2026-04-29
+
+### Internal
+
+- promote to stable v1.4.5 [skip ci]
+- update changelog for v1.4.5 [skip ci]
+- update CI workflow to use centralized input gathering action, update CONVENTIONS.cs
+- update CI configuration variables for improved flexibility
+- update CI configuration to include TEST_PROJECTS and BENCHMARK_PROJECTS variables
+
 ## v1.4.5 - 2026-04-24
 
 See prereleases below.
