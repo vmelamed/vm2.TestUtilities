@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.7-preview.1 - 2026-04-30
+
+### Fixed
+
+- commit prefix
+
+### Internal
+
+- promote to stable v1.4.6 [skip ci]
+- update changelog for v1.4.6 [skip ci]
+
 ## v1.4.6 - 2026-04-29
 
 See prereleases below.
