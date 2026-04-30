@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.4.7-preview.2 - 2026-04-30
+
+### Fixed
+
+- change the dependabot's commit message prefix
+
 ## v1.4.7-preview.1 - 2026-04-30
 
 ### Fixed
