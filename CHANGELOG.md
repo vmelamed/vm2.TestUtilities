@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.5.0-preview.1 - 2026-05-18
+
+### Added
+
+- add telemetry opt-out and first-time experience skip for .NET CLI [skip ci]
+- add NSubstitute package reference to project files
+
+### Internal
+
+- sync with diff-shared [skip ci]
+- Bump the minor-and-patch group with 13 updates
+- diff-shared
+- update Microsoft.NET.ILLink.Tasks to version 10.0.8
+- Bump the minor-and-patch group with 1 update
+- update SDK version to 10.0.300 and bump Microsoft.NET.ILLink.Tasks to 10.0.8
+
 ## v1.4.7-preview.2 - 2026-04-30
 
 ### Fixed
