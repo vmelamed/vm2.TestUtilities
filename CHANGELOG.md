@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.5.1-preview.1 - 2026-05-19
+
+### Internal
+
+- promote to stable v1.5.0 [skip ci]
+- update changelog for v1.5.0 [skip ci]
+- remove Microsoft.Extensions.Hosting package references
+
 ## v1.5.0 - 2026-05-18
 
 See prereleases below.
