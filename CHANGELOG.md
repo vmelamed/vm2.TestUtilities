@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.1-preview.2 - 2026-05-20
+
+### Internal
+
+- update Copilot instructions header for vm2.TestUtilities
+
 ## v1.5.1-preview.1 - 2026-05-19
 
 ### Internal
