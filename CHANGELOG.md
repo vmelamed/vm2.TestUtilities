@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.5.2-preview.1 - 2026-05-21
+
+### Fixed
+
+- correct wording in CI warning message and conventions documentation
+
+### Internal
+
+- promote to stable v1.5.1 [skip ci]
+- update changelog for v1.5.1 [skip ci]
+
 ## v1.5.1 - 2026-05-21
 
 See prereleases below.
