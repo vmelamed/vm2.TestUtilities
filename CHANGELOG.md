@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.5.1-preview.3 - 2026-05-21
+
+### Internal
+
+- sync with diff-shared.sh
+- fix typo in conventions for merge or copy action
+
 ## v1.5.1-preview.2 - 2026-05-20
 
 ### Internal
