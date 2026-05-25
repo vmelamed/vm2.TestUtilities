@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.2-preview.3 - 2026-05-25
+
+### Fixed
+
+- simplify AoT property group and update comment for package references
+
 ## v1.5.2-preview.2 - 2026-05-25
 
 ### Fixed
