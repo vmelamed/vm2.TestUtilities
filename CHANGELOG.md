@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.2-preview.2 - 2026-05-25
+
+### Fixed
+
+- disable AoT, refactor Directory.Build.props
+
 ## v1.5.2-preview.1 - 2026-05-21
 
 ### Fixed
