@@ -81,9 +81,7 @@
         'FluentAssertions', 'Microsoft.Bcl.AsyncInterfaces', 'System.Configuration.ConfigurationManager',
         'xunit.v3.common', 'xunit.v3.core' are not built with `true` and may not be compatible with AOT.
     -->
-    <PropertyGroup Label="AoT" Condition="
-        '$(IsProductProject)' == 'true' AND
-        '$(IsAotCompatible)' != 'false'">
+    <PropertyGroup Label="AoT">
         <IsAotCompatible>false</IsAotCompatible>
         <VerifyReferenceAotCompatibility>false</VerifyReferenceAotCompatibility>
     </PropertyGroup>
@@ -280,7 +278,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- Add repo-specific properties and packages here -->
+        <!-- Add repo-specific package references here -->
         <!-- e.g. <PackageReference Include="Newtonsoft.Json" /> -->
     </ItemGroup>
 
