@@ -95,8 +95,8 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
     </PropertyGroup>
 
-    <!-- The following group builds the product project(s) as AOT compatible and enforces verification of the dependencies AOT compatibility
-         unless the user or the project explicitly defines it as incompatible, e.g. with <IsAotCompatible>false</IsAotCompatible> -->
+    <!-- The following group builds the product project(s) as not AOT compatible as most of the test packages are not AoT.
+         It's OK for test projects -->
     <PropertyGroup Label="AoT">
         <IsAotCompatible>false</IsAotCompatible>
         <VerifyReferenceAotCompatibility>false</VerifyReferenceAotCompatibility>
