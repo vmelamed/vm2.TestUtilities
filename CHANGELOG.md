@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.0-preview.1 - 2026-05-26
+
+### Internal
+
+- promote to stable v1.5.2 [skip ci]
+- update changelog for v1.5.2 [skip ci]
+
 ## v1.5.2 - 2026-05-25
 
 See prereleases below.
