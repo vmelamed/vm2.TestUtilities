@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0.2-preview.1 - 2026-05-27
+
+### Fixed
+
+- update regex options for project type detection in Directory.Build.props
+- simplify condition for IsProductProject in Directory.Build.props
+
+### Internal
+
+- promote to stable v2.0.1 [skip ci]
+- update changelog for v2.0.1 [skip ci]
+
 ## v2.0.1 - 2026-05-26
 
 See prereleases below.
