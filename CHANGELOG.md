@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.2-preview.2 - 2026-05-28
+
+### Fixed
+
+- ensure consistent line endings in .gitattributes and update project settings for AOT compatibility
+
 ## v2.0.2-preview.1 - 2026-05-27
 
 ### Fixed
