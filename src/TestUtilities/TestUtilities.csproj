@@ -3,6 +3,11 @@
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <RootNamespace>vm2.TestUtilities</RootNamespace>
+
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+        <IsTrimmable>true</IsTrimmable>
+        <IsAotCompatible>false</IsAotCompatible>
+        <VerifyReferenceAotCompatibility>false</VerifyReferenceAotCompatibility>
     </PropertyGroup>
 
     <PropertyGroup Label="NuGet Package Settings">
