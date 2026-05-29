@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.0.2-preview.3 - 2026-05-29
+
+### Internal
+
+- sync with diff-shared
+- update dependencies
+- disable AOT
+
 ## v2.0.2-preview.2 - 2026-05-28
 
 ### Fixed
