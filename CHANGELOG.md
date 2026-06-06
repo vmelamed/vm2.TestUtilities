@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.0.3-preview.1 - 2026-06-06
+
+### Fixed
+
+- streamline the dev. environment for multi-OS/multi-IDE and for consistent configuration of AI [skip ci]
+- remove trailing newline from file header template
+
+### Internal
+
+- promote to stable v2.0.2 [skip ci]
+- update changelog for v2.0.2 [skip ci]
+- update comment for text file normalization in .gitattributes [skip ci]
+- update commit prefix for consistency in changelog and configuration files
+- add repo-specific package versions
+
 ## v2.0.2 - 2026-05-29
 
 See prereleases below.
