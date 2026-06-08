@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.1.0-preview.1 - 2026-06-08
+
+### Added
+
+- add max generation collection thresholds to CI environment variables [skip ci]
+
+### Internal
+
+- update Microsoft.Testing.Extensions.CodeCoverage to version 18.8.0
+
 ## v2.0.3-preview.1 - 2026-06-06
 
 ### Fixed
