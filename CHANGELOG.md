@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.1-preview.2 - 2026-06-09
+
+### Fixed
+
+- correct spelling of 'local_variable' in naming rules and add BenchmarkArtifacts to .gitignore
+
 ## v2.1.1-preview.1 - 2026-06-09
 
 ### Internal
