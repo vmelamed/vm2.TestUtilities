@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.1-preview.1 - 2026-06-09
+
+### Internal
+
+- promote to stable v2.1.0 [skip ci]
+- update changelog for v2.1.0 [skip ci]
+- update dependencies
+
 ## v2.1.0 - 2026-06-08
 
 See prereleases below.
