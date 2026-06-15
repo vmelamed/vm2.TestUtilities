@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <RootNamespace>vm2.TestUtilities</RootNamespace>
 
-        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
         <IsTrimmable>true</IsTrimmable>
         <IsAotCompatible>false</IsAotCompatible>
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
         <VerifyReferenceAotCompatibility>false</VerifyReferenceAotCompatibility>
     </PropertyGroup>
 
