@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.1.2-preview.2 - 2026-06-15
+
+### Internal
+
+- sync, no code changes [skip ci]
+- Bump the minor-and-patch group with 1 update
+- AI files; etc.; update dependencies; other small discrepancies
+- rename (capitalization) of RefreshLockFiles.yaml
+
 ## v2.1.2-preview.1 - 2026-06-11
 
 ### Internal
