@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.2-preview.3 - 2026-06-17
+
+### Internal
+
+- update Copilot instructions and add CLAUDE context documentation
+
 ## v2.1.2-preview.2 - 2026-06-15
 
 ### Internal
