@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.2-preview.4 - 2026-06-18
+
+### Fixed
+
+- drop TOC from AI docs - they don't need it
+
 ## v2.1.2-preview.3 - 2026-06-17
 
 ### Internal
