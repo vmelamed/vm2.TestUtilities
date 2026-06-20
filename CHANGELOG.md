@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.2-preview.6 - 2026-06-20
+
+### Fixed
+
+- remove package self-reference to vm2.TestUtilities in test projects
+
 ## v2.1.2-preview.5 - 2026-06-19
 
 ### Internal
