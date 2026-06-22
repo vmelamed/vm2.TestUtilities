@@ -293,7 +293,6 @@
 
         <PackageReference Include="xunit.v3.extensibility.core" />
         <PackageReference Include="FluentAssertions" />
-        <PackageReference Include="NSubstitute" />
     </ItemGroup>
 
     <ItemGroup>
@@ -304,7 +303,6 @@
         <Using Include="FluentAssertions" />
         <Using Include="FluentAssertions.Formatting" />
         <Using Include="FluentAssertions.Extensibility" />
-        <Using Include="NSubstitute" />
     </ItemGroup>
 
 </Project>
