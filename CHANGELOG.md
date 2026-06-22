@@ -1,5 +1,19 @@
 # Changelog
 
+## v2.1.3-preview.1 - 2026-06-22
+
+### Fixed
+
+- update conventions for async handling and error management [skip ci]
+
+### Internal
+
+- promote to stable v2.1.2 [skip ci]
+- update changelog for v2.1.2 [skip ci]
+- update workflow names and descriptions for clarity; streamline package references and usings
+- remove NSubstitute references from project configuration and package lock
+- simplify pull request template by removing checklist and clarifying additional notes section
+
 ## v2.1.2 - 2026-06-20
 
 See prereleases below.
