@@ -31,10 +31,8 @@ public class FluentAssertionsExceptionFormatter : IValueFormatter
     /// <param name="context">Contains additional information that the implementation should take into account.</param>
     /// <param name="formatChild">Allows the s_formatter to recursively format any child objects.</param>
     /// <remarks>
-    /// DO NOT CALL <see cref="Formatter.ToString(object,FormattingOptions)" /> directly, but use
-    /// <paramref name="formatChild" /> instead. This will ensure cyclic dependencies are properly detected.<br/>
-    /// Also, the <see cref="FormattedObjectGraph" /> may throw
-    /// an <see cref="MaxLinesExceededException" /> that must be ignored by implementations of this interface.
+    /// DO NOT CALL this method directly, but use <paramref name="formatChild" /> instead. This will ensure cyclic dependencies
+    /// are properly detected.<br/>
     /// </remarks>
     public void Format(
         object value,

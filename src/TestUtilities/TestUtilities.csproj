@@ -27,16 +27,4 @@
         <None Include="../../README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FluentAssertions" />
-        <PackageReference Include="xunit.v3.extensibility.core" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Using Include="Xunit" />
-        <Using Include="FluentAssertions" />
-        <Using Include="FluentAssertions.Formatting" />
-        <Using Include="FluentAssertions.Extensibility" />
-    </ItemGroup>
-
 </Project>
