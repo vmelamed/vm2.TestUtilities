@@ -105,10 +105,12 @@
 
     <!-- ================ Common Package References and usings for All projects ================ -->
     <ItemGroup>
-        <!-- The following package references are common for all projects and are included by default but their assets do not
-             get included in the final build. "PrivateAssets" declares which assets are consumed locally by the package but NOT
-             exposed in the package's .nuspec (they are **private** to the consuming project only).
-             To override this behavior, you can modify the PrivateAssets attribute or remove it entirely for specific package references as needed:
+        <!-- The following package references are available to all projects during the build but are NOT listed
+             as dependencies in the published .nuspec — consumers of your NuGet package will not transitively
+             receive them. This is controlled by PrivateAssets="all": all assets are private to this project.
+             To expose one of these packages to consumers in a specific project, override it with, e.g.,
+             <PackageReference Update="PackageName" PrivateAssets="none" /> or the NuGet default
+             <PackageReference Update="PackageName" PrivateAssets="contentfiles;analyzers;build" />
         -->
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" /><!-- needed only during the build process for source link references to GitHub repositories -->
         <PackageReference Include="MinVer" PrivateAssets="all" /><!-- needed only during building/packaging to determine the version numbers based on the git history -->
@@ -116,6 +118,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Using Include="System.Collections" />
         <Using Include="System.Collections.Concurrent" />
         <Using Include="System.Collections.Immutable" />
         <Using Include="System.Collections.Frozen" />
@@ -171,6 +174,7 @@
 
     <ItemGroup Condition="$(IsTestProject) == 'true'">
         <!-- Use MTP v2 for all environments -->
+        <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
         <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
         <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
         <PackageReference Include="xunit.v3.mtp-v2" />
@@ -185,7 +189,7 @@
 
     <!-- Common usings for the test projects: -->
     <ItemGroup Condition="$(IsTestProject) == 'true'">
-        <Using Include="Microsoft.Extensions.TimeProvider.Testing" />
+        <Using Include="Microsoft.Extensions.Time.Testing" />
         <Using Include="Xunit" />
         <Using Include="FluentAssertions" />
         <Using Include="NSubstitute" />
@@ -268,7 +272,6 @@
     <ItemGroup Condition="$(IsInBenchmarksFolder) == 'true'">
         <Using Include="BenchmarkDotNet" />
         <Using Include="BenchmarkDotNet.Attributes" />
-        <Using Include="BenchmarkDotNet.Annotations" />
         <Using Include="BenchmarkDotNet.Configs" />
         <Using Include="BenchmarkDotNet.Jobs" />
         <Using Include="BenchmarkDotNet.Order" />
