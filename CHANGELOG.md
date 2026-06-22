@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.3-preview.3 - 2026-06-22
+
+### Internal
+
+- diff-shared
+
 ## v2.1.3-preview.2 - 2026-06-22
 
 ### Internal
