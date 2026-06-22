@@ -23,6 +23,7 @@ public class FluentAssertionsExceptionFormatter : IValueFormatter
     /// otherwise, <see langword="false" />.</returns>
     public bool CanHandle(object value) => value is Exception;
 
+
     /// <summary>
     /// Returns a human-readable representation of <paramref name="value" />.
     /// </summary>
@@ -31,8 +32,9 @@ public class FluentAssertionsExceptionFormatter : IValueFormatter
     /// <param name="context">Contains additional information that the implementation should take into account.</param>
     /// <param name="formatChild">Allows the s_formatter to recursively format any child objects.</param>
     /// <remarks>
-    /// DO NOT CALL this method directly, but use <paramref name="formatChild" /> instead. This will ensure cyclic dependencies
-    /// are properly detected.<br/>
+    /// DO NOT CALL <c>Formatter.ToString</c> method directly, but use <paramref name="formatChild" /> instead.
+    /// This will ensure cyclic dependencies are properly detected.
+    /// See also: <seealso href="https://xceed.com/documentation/xceed-fluent-assertions-for-net/FluentAssertions~FluentAssertions.Formatting.IValueFormatter~Format.html?highlight=formatter.tostring%2C"/>
     /// </remarks>
     public void Format(
         object value,
