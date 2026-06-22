@@ -1,12 +1,4 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025-2026 Val Melamed
 
-global using System;
-global using System.Diagnostics.CodeAnalysis;
-global using System.Runtime.CompilerServices;
-global using System.Text.RegularExpressions;
-
-global using Microsoft.Extensions.Logging;
-global using vm2.TestUtilities.FluentAssertionsExtensions;
-
 [assembly: CaptureConsole]

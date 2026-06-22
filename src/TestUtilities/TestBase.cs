@@ -3,6 +3,8 @@
 
 namespace vm2.TestUtilities;
 
+using vm2.TestUtilities.FluentAssertionsExtensions;
+
 /// <summary>
 /// Base class for tests that need access to an <see cref="ITestOutputHelper"/> for captured test output and the
 /// Fluent Assertions test initialization performed by the constructor.
