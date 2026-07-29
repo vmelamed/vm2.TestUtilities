@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.1.4-preview.1 - 2026-07-29
+
+### Internal
+
+- promote to stable v2.1.3 [skip ci]
+- update changelog for v2.1.3 [skip ci]
+- update conventions for implicit usings in C# projects [skip ci]
+- change `.github/copilot-instructions.md` to refer to both `CONVENTIONS.md` AND to `../CLAUDE.md` [skip ci]
+- update Copilot instructions header to reflect correct package name [skip ci]
+- enhance conventions for instance and extension methods [skip ci]
+- update conventions to include interface honesty and AI co-authorship guidelines [skip ci]
+- update package versions for Microsoft.Extensions libraries and SourceLink
+- enhance conventions with guidelines for equality and algebraic-law tests [skip ci]
+- update package versions for Microsoft.Extensions libraries and SDK [skip ci]
+- update System.CommandLine and Microsoft.Testing.Extensions.CodeCoverage versions; add vm2.TestUtilities package [skip ci]
+
 ## v2.1.3 - 2026-06-22
 
 See prereleases below.
