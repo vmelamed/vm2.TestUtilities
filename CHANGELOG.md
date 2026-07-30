@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.1.4-preview.2 - 2026-07-30
+
+### Fixed
+
+- add permissions and token configuration for GitHub Actions workflow
+
+### Internal
+
+- add NUGET_USERNAME environment variable to Prerelease and Release workflows
+
 ## v2.1.4-preview.1 - 2026-07-29
 
 ### Internal
