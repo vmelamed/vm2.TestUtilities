@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.3 - 2026-07-30
+
+### Fixed
+
+- improve reminder message for CHANGELOG.md updates in prerelease workflow
+
 ## v2.1.4-preview.2 - 2026-07-30
 
 ### Fixed
