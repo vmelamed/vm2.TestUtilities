@@ -86,15 +86,13 @@ jobs:
           source $DEVOPS_LIB_DIR/gh_core.sh
 
           release_pat='${{ secrets.RELEASE_PAT }}'
-          if [[ -z $release_pat ]]; then
-              error "RELEASE_PAT is not set"
-              exit 1
-          fi
+          [[ -n $release_pat ]] || error "RELEASE_PAT is not set"
           nuget_api_key='${{ secrets.NUGET_API_KEY }}'
           if [[ $nuget_server != 'nuget' && -z $nuget_api_key ]]; then
-              error "NUGET_API_KEY is not set"
-              exit 1
+            error "NUGET_API_KEY is not set"
           fi
+
+          exit_if_has_errors
 
           dotnet_version='${{ env.DOTNET_VERSION }}'
           package_projects=$(is_safe_json_array '${{ env.PACKAGE_PROJECTS }}' '[]' is_safe_existing_file)
