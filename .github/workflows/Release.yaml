@@ -66,6 +66,7 @@ jobs:
 
           release_pat='${{ secrets.RELEASE_PAT }}'
           [[ -n $release_pat ]] || error "RELEASE_PAT is not set"
+          
           nuget_api_key='${{ secrets.NUGET_API_KEY }}'
           if [[ $nuget_server != 'nuget' && -z $nuget_api_key ]]; then
             error "NUGET_API_KEY is not set"
@@ -120,9 +121,8 @@ jobs:
       - get-params
     uses: vmelamed/vm2.DevOps/.github/workflows/_release.yaml@main
     secrets:
-      RELEASE_PAT: ${{ secrets.RELEASE_PAT }} # Required PAT for pushing changelog and tags past branch protection.
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      # TODO: Make sure to set the API key issued by the selected NuGet server.
+      RELEASE_PAT: ${{ secrets.RELEASE_PAT }}     # Required PAT for pushing changelog and tags past branch protection.
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} # Required NuGet API key if server is not using Trusted Publishing, e.g. GitHub Packages
     permissions:
       contents: write # Required to checkout the code, push changelog, and create tags
       packages: write # Required to add stable NuGet packages
