@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.12 - 2026-07-31
+
+### Fixed
+
+- update TODO comments for NUGET_API_KEY in workflows
+
 ## v2.1.4-preview.11 - 2026-07-31
 
 ### Fixed
