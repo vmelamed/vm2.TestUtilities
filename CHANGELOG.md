@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.6 - 2026-07-31
+
+### Fixed
+
+- add NUGET_API_KEY to prerelease workflow for NuGet package publishing
+
 ## v2.1.4-preview.5 - 2026-07-31
 
 ### Fixed
