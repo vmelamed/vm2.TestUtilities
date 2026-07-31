@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.9 - 2026-07-31
+
+### Fixed
+
+- add NUGET_API_KEY secret to Release workflow for NuGet package publishing
+
 ## v2.1.4-preview.8 - 2026-07-31
 
 ### Fixed
