@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.5 - 2026-07-31
+
+### Fixed
+
+- add nuget_username to release job parameters for stable releases
+
 ## v2.1.4-preview.4 - 2026-07-31
 
 ### Fixed
