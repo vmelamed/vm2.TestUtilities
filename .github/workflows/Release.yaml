@@ -61,23 +61,8 @@ jobs:
       - name: Gather argument values depending on the event
         id: gather-params
         shell: bash
-        env:
-          RELEASE_PAT: ${{ secrets.RELEASE_PAT }}
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           source $DEVOPS_LIB_DIR/gh_core.sh
-
-          release_pat="$RELEASE_PAT"
-          if [[ -n $release_pat ]]; then
-              error "RELEASE_PAT is not set"
-          fi
-
-          nuget_api_key="$NUGET_API_KEY"
-          if [[ $nuget_server != 'nuget' && -z $nuget_api_key ]]; then
-            error "NUGET_API_KEY is not set"
-          fi
-
-          exit_if_has_errors
 
           dotnet_version='${{ env.DOTNET_VERSION }}'
           package_projects=$(is_safe_json_array '${{ env.PACKAGE_PROJECTS }}' '[]' is_safe_existing_file)
