@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4-preview.8 - 2026-07-31
+
+### Fixed
+
+- remove token configuration from Checkout step in workflows
+
 ## v2.1.4-preview.7 - 2026-07-31
 
 ### Fixed
