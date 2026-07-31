@@ -28,6 +28,9 @@ env:
   SAVE_PACKAGE_ARTIFACTS: ${{ vars.SAVE_PACKAGE_ARTIFACTS || false }} # Set the variable to "true" to save package artifacts.
   VERBOSE: ${{ vars.VERBOSE || false }} # Set the variable to "true" to enable verbose logging in scripts.
 
+permissions:
+  contents: read
+
 jobs:
   get-params:
     name: Prepare the parameters
@@ -47,6 +50,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          token: ${{ github.token }}
+          fetch-depth: 0
 
       - name: Setup DevOps environment variables
         id: setup-env
