@@ -31,7 +31,7 @@ env:
     [
     "src/TestUtilities/TestUtilities.csproj"
     ]
-  # Ensure the NUGET_API_KEY secret is issued by the server selected here.
+  # TODO: Ensure the NUGET_API_KEY secret is issued by the server AND user name selected here.
   NUGET_SERVER: ${{ vars.NUGET_SERVER || 'github' }}
   NUGET_USERNAME: ${{ vars.NUGET_USERNAME || 'vmelamed' }}
   PREPROCESSOR_SYMBOLS: ""
