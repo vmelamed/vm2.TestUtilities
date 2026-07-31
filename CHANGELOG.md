@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.4-preview.14 - 2026-07-31
+
+### Fixed
+
+- correct error handling for RELEASE_PAT in workflows
+- improve error handling for RELEASE_PAT and NUGET_API_KEY in workflows
+- remove redundant error handling for RELEASE_PAT and NUGET_API_KEY in workflows
+
 ## v2.1.4-preview.13 - 2026-07-31
 
 ### Fixed
