@@ -69,6 +69,7 @@ jobs:
           minver_tag_prefix='${{ env.MINVERTAGPREFIX }}'
           minver_prerelease_id='${{ env.MINVERDEFAULTPRERELEASEIDENTIFIERS }}'
           nuget_server='${{ env.NUGET_SERVER }}'
+          nuget_username='${{ env.NUGET_USERNAME }}'
           save_package_artifacts='${{ env.SAVE_PACKAGE_ARTIFACTS }}'
           reason="Stable Release (main manually tagged with a release tag)"
 
