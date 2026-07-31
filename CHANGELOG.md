@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.4-preview.7 - 2026-07-31
+
+### Fixed
+
+- add permissions and token configuration for checkout step in Release workflow
+- remove unnecessary permissions section from Prerelease and Release workflows
+
 ## v2.1.4-preview.6 - 2026-07-31
 
 ### Fixed
