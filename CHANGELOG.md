@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.1.5-preview.1 - 2026-08-02
+
+### Fixed
+
+- remove TODO comments regarding NUGET_API_KEY in workflows and update package version references [skip ci]
+- remove redundant package-projects-len output from workflows
+
+### Internal
+
+- promote to stable v2.1.4 [skip ci]
+- update changelog for v2.1.4 [skip ci]
+
 ## v2.1.4 - 2026-07-31
 
 See prereleases below.
