@@ -39,7 +39,8 @@ jobs:
       reason: ${{ steps.gather-params.outputs.reason }}
       nuget-server: ${{ steps.gather-params.outputs.nuget-server }}
       nuget-username: ${{ steps.gather-params.outputs.nuget-username }}
-
+    env:
+      GH_REASON: ${{ inputs.reason }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -75,6 +76,7 @@ jobs:
 
           reason=$REASON
 
+          gh_reason=$(gh_escape "$reason")
           declare -a args=(
               --force
               --quiet
@@ -83,7 +85,7 @@ jobs:
               package_projects
               preprocessor_symbols
               minver_tag_prefix
-              reason
+              gh_reason
               nuget_server
               nuget_username
           )
