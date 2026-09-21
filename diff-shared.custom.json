@@ -10,6 +10,7 @@
     "action_overrides": {
         "codecov.yaml": "ignore",
         "coverage.settings.xml": "ignore",
-        "testconfig.json": "ignore"
+        "testconfig.json": "ignore",
+        "RebuildBenchHistory.yaml": "ignore"
     }
 }
