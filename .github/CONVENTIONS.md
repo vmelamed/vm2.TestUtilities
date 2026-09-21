@@ -612,11 +612,19 @@ Routing a value through `env:` (previous section) makes it safe from **shell** i
 safe to print into a **workflow command** (`::notice::`, `::warning::`, `::error::`, `::group::`, etc.) — that is a
 separate parsing layer the GitHub Actions runner applies to a step's stdout, independent of and after the shell.
 
-- **A workflow command is recognized by the runner scanning stdout line by line for a line starting with `::`.** If
-  a value is printed as part of a command's message and contains an embedded CR or LF, the value itself supplies a
-  second "line" — and if that line happens to start with `::`, the runner treats it as a real command the workflow
-  emitted, not as data. A reason like `"fine\n::error::fake failure"` turns one intended `::notice::` into a spoofed
-  `::error::` annotation the workflow never wrote.
+- **A workflow command is recognized by the runner scanning the step's entire stdout stream line by line for any
+  line starting with `::` — not just lines your own `printf`/`echo` deliberately wrote as a command.** If a value
+  contains an embedded CR or LF and its raw text reaches stdout by *any* path, the value itself supplies a second
+  "line" in that stream — and if that line happens to start with `::`, the runner treats it as a real command,
+  regardless of what the `printf` that emitted it looked like. A reason like `"fine\n::error::fake failure"` turns
+  one intended `::notice::` into a spoofed `::error::` annotation the workflow never wrote — and the identical thing
+  happens if that same raw reason instead reaches stdout via a plain `## Markdown heading` destined for the step
+  summary, or via a helper like `to_stdout`/`to_summary` that tees its input to both the log and a file. **The
+  trigger condition is "does this value's raw text reach stdout," full stop — not "does my printf look like a `::`
+  command."** A vm2.DevOps workflow shipped exactly this mistake once already: the `::notice::` line was correctly
+  escaped, but a second `printf | to_stdout` right below it, writing an ostensibly-harmless Markdown heading for the
+  step summary, carried the same reason through unescaped — because "it's not a `::` command" was the wrong
+  question to ask.
 - **Always escape with `gh_escape` (`scripts/bash/lib/gh_core.sh`) before interpolating *any*
   value into a workflow command — the same "always, no judgment call" default as the quoting rule above, and the
   same pre-approved-list exception** (`github.actor`, `github.event_name`, a literal boolean/numeric constant — the
@@ -630,7 +638,8 @@ separate parsing layer the GitHub Actions runner applies to a step's stdout, ind
   UI — correct, but needlessly unreadable.
 
   ```yaml
-  # Preferred: gh_escape neutralizes only the characters that matter
+  # Preferred: gh_escape once, reuse the escaped value for every stdout destination --
+  # the ::notice:: line AND the step-summary Markdown, since both reach stdout
   - name: Log manual trigger reason
     env:
       REASON: ${{ inputs.reason }}
@@ -638,19 +647,27 @@ separate parsing layer the GitHub Actions runner applies to a step's stdout, ind
         source $DEVOPS_LIB_DIR/gh_core.sh
         escaped_reason=$(gh_escape "$REASON")
         printf '::notice::Manual release triggered by %s. Reason: %s\n' '${{ github.actor }}' "$escaped_reason"
+        printf '## Manual trigger\n\n**Reason:** %s\n' "$escaped_reason" | to_stdout
 
-  # Avoid: printf %q also escapes ordinary punctuation, and stacking it on an
-  # already-escaped value double-escapes for no security benefit
+  # Avoid: the second printf looks harmless (no '::' in it) and reuses the already-computed
+  # escaped_reason, but this variant discards it and pipes the RAW $REASON through to_stdout --
+  # to_stdout still writes to the runner's stdout stream, so an embedded CR/LF in $REASON still
+  # injects a fake command exactly as if the ::notice:: line itself had been left unescaped
   - name: Log manual trigger reason
     env:
       REASON: ${{ inputs.reason }}
     run: |
-        printf '::notice::Reason: %q\n' "$REASON"
+        source $DEVOPS_LIB_DIR/gh_core.sh
+        escaped_reason=$(gh_escape "$REASON")
+        printf '::notice::Manual release triggered by %s. Reason: %s\n' '${{ github.actor }}' "$escaped_reason"
+        printf '## Manual trigger\n\n**Reason:** %s\n' "$REASON" | to_stdout
   ```
 
 - **This is a distinct risk from the shell-injection rule above and does not substitute for it.** A value can be
-  perfectly safe from shell injection (properly routed through `env:`) and still carry an unescaped CR/LF into a
-  workflow command. Apply both rules together wherever a value reaches a `printf`/`echo` that emits a `::` command:
+  perfectly safe from shell injection (properly routed through `env:`) and still carry an unescaped CR/LF into
+  stdout. Apply both rules together wherever a value's raw text reaches stdout by any path — a `printf`/`echo` that
+  emits a `::` command, or one that doesn't but is piped through `to_stdout`/`to_summary`, or any other route to the
+  step's own stdout:
   `env:` for the shell, `gh_escape` for the runner's command parser.
 
 ### GitHub Actions Expressions: `&&`/`||` Is Not If/Then/Else
