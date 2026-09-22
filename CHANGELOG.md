@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.5-preview.3 - 2026-09-22
+
+### Internal
+
+- remove deprecated/changed CA1859 diagnostic severity setting
+
 ## v2.1.5-preview.2 - 2026-09-22
 
 ### Fixed
