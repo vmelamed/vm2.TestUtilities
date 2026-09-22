@@ -40,6 +40,8 @@ env:
   MINVERTAGPREFIX: ${{ vars.MINVERTAGPREFIX || 'v' }}                           # The MinVer tag prefix.
   MINVERDEFAULTPRERELEASEIDENTIFIERS: ${{ vars.MINVERDEFAULTPRERELEASEIDENTIFIERS || 'preview.0' }} # The MinVer default pre-release identifiers.
   VERBOSE: ${{ vars.VERBOSE || false }}                                         # Set the variable to "true" to enable verbose logging in scripts.
+  REASON: ${{ inputs.reason }}
+  MINVER_PRERELEASE_ID: ${{ inputs.minver-prerelease-id }}
 
 jobs:
   get-params:
@@ -61,9 +63,6 @@ jobs:
       reason: ${{ steps.gather-params.outputs.reason }}
       nuget-server: ${{ steps.gather-params.outputs.nuget-server }}
       nuget-username: ${{ steps.gather-params.outputs.nuget-username }}
-    env:
-      GH_REASON: ${{ inputs.reason }}
-      GH_MINVER_PRERELEASE_ID: ${{ inputs.minver-prerelease-id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -84,13 +83,14 @@ jobs:
         run: |
           source $DEVOPS_LIB_DIR/gh_core.sh
 
-          package_projects='${{ env.PACKAGE_PROJECTS }}'
+          package_projects=$PACKAGE_PROJECTS
           validate_json_array package_projects '[]' is_safe_existing_file
-          preprocessor_symbols='${{ env.PREPROCESSOR_SYMBOLS }}'
-          minver_tag_prefix='${{ env.MINVERTAGPREFIX }}'
-          minver_prerelease_id='${{ env.MINVERDEFAULTPRERELEASEIDENTIFIERS }}'
-          nuget_server='${{ env.NUGET_SERVER }}'
-          nuget_username='${{ env.NUGET_USERNAME }}'
+
+          preprocessor_symbols=$PREPROCESSOR_SYMBOLS
+          minver_tag_prefix=$MINVERTAGPREFIX
+          minver_prerelease_id=$MINVERDEFAULTPRERELEASEIDENTIFIERS
+          nuget_server=$NUGET_SERVER
+          nuget_username=$NUGET_USERNAME
           reason="Pre-release: PR approved, tagged with pre-release tag."
 
           if [[ '${{ github.event_name }}' == "workflow_dispatch" ]]; then
@@ -152,6 +152,13 @@ jobs:
     needs:
       - get-params
     uses: vmelamed/vm2.DevOps/.github/workflows/_prerelease.yaml@main
+    secrets:
+      RELEASE_PAT: ${{ secrets.RELEASE_PAT }}     # Required PAT for pushing changelog and tags past branch protection.
+    permissions:
+      actions: read # Required to checkout the code, push changelog, and create tags
+      contents: write # Required to checkout the code, push changelog, and create tags
+      packages: write # Required to add pre-release NuGet packages
+      id-token: write # Required for authentication with the NuGet server
     with:
       package-projects: ${{ needs.get-params.outputs.package-projects }}
       preprocessor-symbols: ${{ needs.get-params.outputs.preprocessor-symbols }}
@@ -161,13 +168,6 @@ jobs:
       nuget-server: ${{ needs.get-params.outputs.nuget-server }}
       nuget-username: ${{ needs.get-params.outputs.nuget-username }}
       sha: ${{ github.event.workflow_run.head_sha || github.sha }}
-    secrets:
-      RELEASE_PAT: ${{ secrets.RELEASE_PAT }}     # Required PAT for pushing changelog and tags past branch protection.
-    permissions:
-      actions: read # Required to checkout the code, push changelog, and create tags
-      contents: write # Required to checkout the code, push changelog, and create tags
-      packages: write # Required to add pre-release NuGet packages
-      id-token: write # Required for authentication with the NuGet server
 
   publish-prerelease:
     name: Publish NuGet prerelease packages
@@ -179,14 +179,14 @@ jobs:
       actions: read   # Required to read workflow run artifact IDs (for downloading package artifacts if the NuGet server is 'nuget')
       id-token: write # Required for authentication with the NuGet server
     steps:
-      # This job never builds anything -- it only downloads .nupkg files another job already produced and pushes
-      # them -- so "packages" here is just a local staging directory for this job's own runner, not the
-      # Directory.Build.props-derived ArtifactsPath the rest of the pipeline uses for real build output.
-      #
-      # merge-multiple: true flattens all downloaded package artifacts into one directory -- without it, each
-      # artifact-id lands in its own nested subfolder (packages/<artifact-name>/*.nupkg), one level deeper than
-      # the flat packages/*.nupkg glob the publish step below expects.
       - name: Download package artifact
+        # This job never builds anything -- it only downloads .nupkg files another job already produced and pushes
+        # them -- so "packages" here is just a local staging directory for this job's own runner, not the
+        # Directory.Build.props-derived ArtifactsPath the rest of the pipeline uses for real build output.
+        #
+        # merge-multiple: true flattens all downloaded package artifacts into one directory -- without it, each
+        # artifact-id lands in its own nested subfolder (packages/<artifact-name>/*.nupkg), one level deeper than
+        # the flat packages/*.nupkg glob the publish step below expects.
         uses: actions/download-artifact@v8
         with:
           artifact-ids: ${{ needs.build-prerelease.outputs.artifact-ids }}
@@ -242,9 +242,7 @@ jobs:
                   ;;
           esac
 
-          [[ -n "$NUGET_API_KEY" ]] ||
-              error -ec "$err_missing_argument" -ns "No API key provided for server '$server_name'"
-          exit_if_has_errors
+          [[ -n "$NUGET_API_KEY" ]] || exit_with_error -ec "$err_missing_argument" -ns "No API key provided for server '$server_name'"
 
           for pkg in "$artifacts_dir"/*.nupkg; do
               trace "Publishing package: $pkg"

