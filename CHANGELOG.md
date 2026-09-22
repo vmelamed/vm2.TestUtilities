@@ -1,5 +1,23 @@
 # Changelog
 
+## v2.1.5-preview.2 - 2026-09-22
+
+### Fixed
+
+- change the MinVerDefaultPreReleaseIdentifiers to preview.0; separate artifacts output layout settings with a comment
+
+### Internal
+
+- drop UTF-8 BOM from *.cs files; standardize on charset = utf-8
+- update to CI big-bang
+- sync via diff-shared
+- diffs-hared
+- update CI workflows and ignore RebuildBenchHistory.yaml in diff settings, addressing copilot comments
+- diff-shared
+- address copilot issues
+- relaxing a bit and follow the GH quoting rules
+- update CI workflow
+
 ## v2.1.5-preview.1 - 2026-08-02
 
 ### Fixed
