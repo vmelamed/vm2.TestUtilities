@@ -90,7 +90,7 @@ jobs:
           minver_tag_prefix=$MINVERTAGPREFIX
           minver_prerelease_id=$MINVERDEFAULTPRERELEASEIDENTIFIERS
           nuget_server=$NUGET_SERVER
-          nuget_username=$NUGET_USERNAME
+          nuget_username=${NUGET_USERNAME:-}
           reason="Pre-release: PR approved, tagged with pre-release tag."
 
           if [[ '${{ github.event_name }}' == "workflow_dispatch" ]]; then
@@ -168,7 +168,7 @@ jobs:
 
   publish-prerelease:
     name: Publish NuGet prerelease packages
-    
+    needs:
       - get-params
       - build-prerelease
     runs-on: ubuntu-latest

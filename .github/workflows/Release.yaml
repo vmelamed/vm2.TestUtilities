@@ -67,7 +67,7 @@ jobs:
           preprocessor_symbols=$PREPROCESSOR_SYMBOLS
           minver_tag_prefix=$MINVERTAGPREFIX
           nuget_server=$NUGET_SERVER
-          nuget_username=$NUGET_USERNAME
+          nuget_username=${NUGET_USERNAME:-}
 
           # Release is always activated manually from the GitHub Actions UI:
           reason=$REASON
