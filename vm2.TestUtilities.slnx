@@ -32,4 +32,5 @@
     <Folder Name="/src/">
         <Project Path="src/TestUtilities/TestUtilities.csproj" />
     </Folder>
+    <Project Path="../vm2.Templates/vm2.Templates.csproj" />
 </Solution>
