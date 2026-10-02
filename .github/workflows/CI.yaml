@@ -122,6 +122,7 @@ jobs:
       skip-packages: ${{ steps.gather-params.outputs.skip-packages }}
       skip-push: ${{ steps.gather-params.outputs.skip-push }}
     steps:
+
       - name: Gather CI inputs
         id: gather-params
         uses: vmelamed/vm2.DevOps/.github/actions/gather-inputs@main
@@ -131,7 +132,7 @@ jobs:
           benchmark-projects: ${{ env.BENCHMARK_PROJECTS }}
           package-projects: ${{ env.PACKAGE_PROJECTS }}
           runners-os: ${{ env.RUNNERS_OS }}
-          preprocessor-symbols: ${{ env.PREPROCESSOR_SYMBOLS }}
+          preprocessor-symbols:
           min-coverage-pct: ${{ env.MIN_COVERAGE_PCT }}
           max-regression-pct: ${{ env.MAX_REGRESSION_PCT }}
           max-gen1-collects: ${{ env.MAX_GEN1_COLLECTS }}
