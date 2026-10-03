@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.7-preview.1 - 2026-10-03
+
+### Internal
+
+- update changelog to note CI/CD updates
+- update changelog for v2.1.6 [skip ci]
+- diff-shared from SoT
+
 ## v2.1.6 - 2026-10-03
 
 See prereleases below.
