@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- no functional changes, only CI/CD updates
 - fix CI workflow to handle preprocessor symbols correctly
 
 ### Internal
