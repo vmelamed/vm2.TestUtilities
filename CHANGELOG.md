@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.1.6-preview.1 - 2026-10-03
+
+### Fixed
+
+- fix CI workflow to handle preprocessor symbols correctly
+
+### Internal
+
+- promote to stable v2.1.5 [skip ci]
+- update changelog for v2.1.5 [skip ci]
+- update shared content markers and clean up CI workflows
+- update NuGet username handling and add missing project reference
+- add comments for handling custom NuGet server URLs and remove unused project reference
+- diff-shared
+
 ## v2.1.5 - 2026-09-22
 
 See prereleases below.
