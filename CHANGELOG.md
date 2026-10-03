@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.6 - 2026-10-03
+
+See prereleases below.
+
 ## v2.1.6-preview.1 - 2026-10-03
 
 ### Fixed
