@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.7-preview.5 - 2026-10-04
+
+### Internal
+
+- change the default diff-shared action for PULL_REQUEST_TEMPLATE.md to "ignore"
+
 ## v2.1.7-preview.4 - 2026-10-04
 
 ### Internal
