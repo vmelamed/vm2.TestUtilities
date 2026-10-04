@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.7-preview.4 - 2026-10-04
+
+### Internal
+
+- updated the PULL_REQUEST_TEMPLATE.md to mark unit testing and benchmarks as N/A criteria
+
 ## v2.1.7-preview.3 - 2026-10-04
 
 ### Internal
