@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.7-preview.6 - 2026-10-05
+
+### Internal
+
+- update variable handling in workflows to simplify argument passing
+
 ## v2.1.7-preview.5 - 2026-10-04
 
 ### Internal
